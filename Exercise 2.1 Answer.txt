@@ -1,0 +1,6 @@
+There is a supplier relation with four attributes: Id – supplier identification number (unique, not null), Name – supplier name (not null), Address – supplier address, Discount – discount offered by that supplier (not null, values between 0 % and 50 %). Indicate the constraints there are necessary to correctly define the relation.
+
+Id = Entity Integrity Constraint
+Name = Null Constraint
+Address = Domain Constraint
+Discount = Range Constraint (a type of Domain constraint)
