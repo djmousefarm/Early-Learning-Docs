@@ -1,0 +1,389 @@
+
+HTML and CSS
+
+HTML stands for HyperText Markup Language. Hypertext means "text with links in it." Any time you click on a word that brings you to a new webpage, you've clicked on hypertext!
+
+A markup language is a programming language used to make text do more than just sit on a page: it can turn text into images, links, tables, lists, and much more. HTML is the markup language we'll be learning.
+
+What makes webpages pretty? That's CSS�Cascading Style Sheets. Think of it like skin and makeup that covers the bones of HTML. We'll learn HTML first, then worry about CSS in later courses.
+
+The first thing we should do is set up the skeleton of the page.
+
+a. Always put <!DOCTYPE html> on the first line. This tells the browser what language it's reading (in this case, HTML).
+ b. Always put <html> on the next line. This starts the HTML document.
+ c. Always put </html> on the last line. This ends the HTML document.
+
+Hyperlinks:
+
+<a href="http://www.codecademy.com">My Favorite Site!</a>
+
+01. First, there's an opening <a> tag and that tag has an attribute called href. The href value tells your link where you want it to go, in this case http://www.codecademy.com.
+02. Then you have a description of your link between your opening <a> and your closing </a> tags. This is what you will be able to click on.
+03. Finally, you have your closing </a> tag.
+
+Standard form for a css link:
+
+<link type='text/css' rel='stylesheet' href="stylesheet.css" />
+
+(The href will change depending on the name of your css file)
+
+
+Parents, children, and siblings
+
+If you think of the <html> tag as the trunk of the tree, you can think of its immediate branches—<head> and <body>—as its children. Both tags are children of <html>, and <html> is their parent element. Because they are both immediate children of <html> (that is, they are both only one element away), they are siblings.
+
+Just like a real family, elements have children, grandchildren, great-grandchildren, and so on (though we don't make this distinction with HTML—a child of an element, and all that child's children, are children of the first parent).
+
+Here's the same as described in html :
+
+<!DOCTYPE html>
+
+<html> <!--The trunk of the tree!-->
+	
+	<head> <!--Child of html, parent of title,
+
+		   sibling of body-->
+
+		<title></title> <!--Immediate child of head,
+						child of head AND html-->
+
+	</head>
+	
+		<body> <!--Child of html, parent of p,
+
+		   sibling of head-->
+
+			<p></p> <!--Immediate child of body,
+
+				child of body AND html-->
+
+	</body>
+
+</html>
+
+CSS cascading techniques
+
+Remember, you can reach an element that is a child of another element like this:
+div div p { /* Some CSS */ }
+
+where in this case, we'd be grabbing any <p> that is nested somewhere inside a <div> that is nested somewhere inside another <div>. If you want to grab direct children—that is, an element that is directly nested inside another element, with no elements in between—you can use the > symbol, like so:
+div > p { /* Some CSS */ }
+
+This only grabs <p>s that are nested directly inside of <div>s; it won't grab any paragraphs that are, say, nested inside lists that are in turn nested inside <div>s.
+
+Introduction: Cascading with CSS
+
+Synopsis: When you set a property of a selector like 'p' to a certain value, that value applies to all p tags. If, however, you change that same property to a different value for a more specific instance of p, that change will override the 'general rule'. 
+
+•If you say p { font-family: Garamond}, all 'p's will have the font Garamond.
+
+•BUT if you say li p {font-family: Verdana}, 'p's outside of 'li's will be in Garamond, and 'p's INSIDE 'li's will be in Verdana. 
+
+•The more specific your selectors are, the higher importance CSS gives to the styling you apply!
+
+Summary: Greater specificity makes CSS prioritize that particular styling.
+
+As we mentioned, certain selectors will "override" others if they have a greater specificity value. ul li p { is more specific CSS than just p {, so when CSS sees tags that are both <p> tags and happen to be inside unordered lists, it will apply the more specific styling (ul li p {) to the text inside the lists.
+
+There are two selectors that are even more specific than nested selectors like the ones above: classes and IDs.
+
+HTML elements can be CSS selectors, but as we saw with the universal selector *, they're not the only selectors available.
+
+There are two important selectors you can use in addition to the universal selector and HTML elements: classes and IDs.
+
+Classes are useful when you have a bunch of elements that should all receive the same styling. Rather than applying the same rules to several selectors, you can simply apply the same class to all those HTML elements, then define the styling for that class in the CSS tab.
+
+Classes are assigned to HTML elements with the word class and an equals sign, like so:
+<div class="square"></div>
+<img class="square"/>
+<td class="square"></td>
+
+Classes are identified in CSS with a dot (.), like so:
+.square {
+    height: 100px;
+    width: 100px;
+}
+
+This allows you to take elements of different types and give them the same styling.
+
+IDs, on the other hand, are great for when you have exactly one element that should receive a certain kind of styling.
+
+IDs are assigned to HTML elements with the word id and an equals sign:
+<div id="first"></div>
+<div id="second"></div>
+<p id="intro"></p>
+
+IDs are identified in CSS with a pound sign (#):
+#first {
+    height: 50px;
+}
+
+#second {
+    height: 100px;
+}
+
+#intro {
+    color: #FF0000;
+}
+
+This allows you to apply style to a single instance of a selector, rather than all instances.
+
+A pseudo-class selector is a way of accessing HTML items that aren't part of the document tree (remember the tree structure we talked about earlier?). For instance, it's very easy to see where a link is in the tree. But where would you find information about whether a link had been clicked on or not? It isn't there!
+
+Pseudo-class selectors let us style these kinds of changes in our HTML document. For example, we saw we could change a link's text-decoration property to make it something other than blue and underlined. Using pseudo selectors, you can control the appearance of unvisited and visited links—even links the user is hovering over but hasn't clicked!
+
+The CSS syntax for pseudo selectors is
+selector:pseudo-class_selector 
+{
+    property: value;
+}
+
+It's just that little extra colon (:).
+
+There are a number of useful pseudo-class selectors for links, including:
+
+a:link: An unvisited link.
+a:visited: A visited link.
+a:hover: A link you're hovering your mouse over.
+
+Another useful pseudo-class selector is first-child. It's used to apply styling to only the elements that are the first children of their parents. For instance:
+
+p:first-child 
+{
+    color: red;
+}
+
+Would make all paragraphs that are the first children of their parent elements red.
+
+You can actually select any child of an element after the first child with the pseudo-class selector nth-child; you just add the child's number in parentheses after the pseudo-class selector. For example,
+
+p:nth-child(2) 
+{
+    color: red;
+}
+
+Would turn every paragraph that is the second child of its parent element red.
+
+The element that is the child goes before :nth-child; its parent element is the element that contains it.
+
+Important example illustrating child numbering!
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+
+		<title>Result</title>
+
+	</head>
+
+	<body>
+
+		<!--Add your HTML below!-->
+
+		<h3 class="fancy">Header three - I may be a header but i count as the first child</h3>
+
+		
+		<p class="fancy">Just a random paragraph</p>
+
+		
+		<p id="serious">Yet another random paragraph</p>
+
+		
+		<p>This is the third paragraph but also the fourth child of body!</p>
+
+	</body>
+
+</html>
+
+Here's the associated CSS file :
+
+.fancy
+
+{
+
+    font-family:cursive;
+
+    color:violet;
+
+}
+
+
+
+#serious
+
+{
+
+    font-family:Courier;
+
+    color:#8C8C8C;
+
+}
+
+
+
+p:nth-child(4)
+
+{
+
+    font-size:26px;
+
+}
+
+CSS Positioning
+
+Each HTML element gets its own box to live in.
+
+As you saw, the outermost box of each element went all the way across the page. This is why until now, your HTML elements have been sitting on top of one another: by default, they take up the full width of the page.
+
+We can change all this with the first positioning property we'll learn: the display property. We'll learn about four possible values.
+
+block: This makes the element a block box. It won't let anything sit next to it on the page! It takes up the full width.
+
+inline-block: This makes the element a block box, but will allow other elements to sit next to it on the same line.
+
+inline: This makes the element sit on the same line as another element, but without formatting it like a block. It only takes up as much width as it needs (not the whole line).
+
+none: This makes the element and its content disappear from the page entirely!
+
+Things are block by default.
+
+Inline-block
+
+As mentioned, any element that comes in as a block (say, a paragraph) will automatically take up the full width of the page, no matter how much or how little content you put in.
+
+If we specify a display of inline-block, however, our blocks are still blocks, but will be able to sit next to each other on the same line.
+
+In an inline-block all elements all moved onto the same line! You can already start to see how this type of positioning can be useful for navigation bars like the one at the top of the main Codecademy page (where you can click "Learn," "Teach," and so on).
+
+The inline-block value allows you to put several block elements on the same line. The inline value places all your elements next to one another, but not as blocks: they don't keep their dimensions.
+
+None!
+
+The good news is, inline places all your elements on a single line. The bad news is that it doesn't maintain their "box"ness: as you saw, all your <div>s got squished to the smallest possible width!
+
+The inline display value is better suited for HTML elements that are blocks by default, such as headers and paragraphs.
+
+Finally, we'll try out the display value none. As you might expect, this prevents the page from displaying the selected element. As you might not expect, this removes the selected element from the page entirely, including any children and any content. Poof! Gone! (But not gone forever—changing the display value away from none will bring everything back.)
+
+https://s3.amazonaws.com/codecademy-blog/assets/ae09140c.png - A diagram of how html lays out things on a page
+
+Within this example, As you can see, each box is made of layers. From the outermost to the innermost:
+
+The margin is the space around the element. The larger the margin, the more space between our element and the elements around it. We can adjust the margin to move our HTML elements closer to or farther from each other.
+
+The border is the edge of the element. It's what we've been making visible every time we set the border property.
+
+The padding is the spacing between the content and the border. We can adjust this value with CSS to move the border closer to or farther from the content.
+
+The content is the actual "stuff" in the box. If we're talking about a <p> element, the "stuff" is the text of the paragraph.
+
+You'll see abbreviations like TM, TB, and TP in the diagram. These stand for "top margin," "top border," and "top padding." As we'll see, we can adjust the top, right, left, and bottom padding, border, and margin individually.
+
+Margin
+
+Let's start with our margins. Adjusting our margins not only moves our element relative to other elements on the page, but also relative to the "walls" of the HTML document.
+
+For instance, if we take an HTML element with a specific width (such as our <div> in the editor) and set its margin to auto, this tells the document to automatically put equal left and right margins on our element, centering it on the page.
+
+Margin top, right, bottom, left
+
+If you want to specify a particular margin, you can do it like this:
+margin-top: /*some value*/
+margin-right: /*some value*/
+margin-bottom: /*some value*/
+margin-left: /*some-value*/
+
+You can also set an element's margins all at once: you just start from the top margin and go around clockwise (going from top to right to bottom to left). For instance,
+margin: 1px 2px 3px 4px;
+
+will set a top margin of 1 pixel, a right margin of 2, a bottom of 3, and a left of 4.
+
+Borders are pretty familiar:
+
+*
+{
+	border:2px solid #000000;
+}
+
+(2 px wide border, that's solid, set to the hex-color #000000)
+
+Padding
+
+Good! Let's adjust the padding. Remember, the padding is the space between your border and your innermost layer: the actual content.
+
+Padding can be set in two ways, just like your margins. You can either select them individually, like this:
+padding-top: /*some value*/
+padding-right: /*some value*/
+padding-bottom: /*some value*/
+padding-left: /*some-value*/
+
+Or select them all in one declaration, like this:
+padding: value value value value;
+
+You should also know that if you want your padding to be the same for all four sides, you can declare that value only once. padding: 10px will give your HTML element 10 pixels of padding on all sides.
+
+Negative values
+
+Did you see that? Your <div> got huge! That's because the background color is the same for the content and the padding.
+
+When you give CSS a positive padding or margin value, it puts that space between the element and its reference: for instance, if you have a <div> and you give it a margin-left of 20px, it puts twenty pixels between the left margin of that <div> and the side of the screen. This effectively moves the <div> twenty pixels to the right.
+
+If you want to move an element in the other direction, you can give CSS a negative value: margin-left: -20px will move the element twenty pixels to the left.
+
+Floating
+
+So we know how our individual elements are constructed. But how do we determine where they go on the page?
+
+One way is to use floats. When you float an element on the page, you're telling the webpage: "I'm about to tell you where to put this element, but you have to put it into the flow of other elements." This means that if you have several elements all floating, they all know the others are there and don't land on top of each other.
+
+You can think of the HTML page as sort of like a sea, and floating elements as boats on it: all the boats have positions on the sea, and they all see and steer clear of each other.
+
+(Some of the positioning methods we'll learn in upcoming sections can accidentally drop elements on top of each other.)
+
+As you may have already guessed, we can use floated elements to naturally divide our pages into different sections.
+
+Clearing elements
+
+Unfortunately, we sometimes mix large floating elements with non-floating ones, and elements do end up on top of each other.
+
+See your footer (the blue bit between the two columns)? It's stuck back there because we haven't told it something very important: to clear the other elements on the page!
+
+If you tell an element to clear: left, it will immediately move below any floating elements on the left side of the page; it can also clear elements on the right. If you tell it to clear: both, it will get out of the way of elements floating on the left and right!
+
+The syntax is what you're used to:
+element 
+{
+    clear: /*right, left, or both*/
+}
+
+Static by default
+
+Great work so far! Now that you understand positioning elements with float, let's move on to slightly more complex positioning methods.
+
+If you don't specify an element's positioning type, it defaults to static. This just means "where the element would normally go." If you don't tell an element how to position itself, it just plunks itself down in the document.
+
+Absolute positioning
+
+The first type of positioning is absolute positioning. When an element is set to position: absolute, it's then positioned in relation to the first parent element it has that doesn't have position: static. If there's no such element, the element with position: absolute gets positioned relative to <html>.
+
+To show you how this works, we've set the #outer div to have absolute positioning. This means that when you position the #inner div, it will be relative to #outer. (If #outer had the default positioning of static, then #inner would get positioned relative to the entire HTML document.)
+
+Relative positioning
+
+Good! Did you notice how the #inner div moved 20 pixels in from the edge of the #outer div? That's absolute positioning at work.
+
+Relative positioning is more straightforward: it tells the element to move relative to where it would have landed if it just had the default static positioning.
+
+If you give an element relative positioning and tell it to have a margin-top of 10px, it doesn't move down ten pixels from any particular thing—it moves down ten pixels from where it otherwise would have been.
+
+Fixed positioning
+
+Finally, fixed positioning anchors an element to the browser window—you can think of it as gluing the element to the screen. If you scroll up and down, the fixed element stays put even as other elements scroll past.
+
+Something about z-index
+
+the z-index property. You can think of the z-index as a measure of importance: the higher an element's z-index, the higher it will be "stacked" on the page. Giving your header a z-index of 1 while not giving any of the other elements a z-index ensures that your header will sit "on top of" your other elements and won't get stuck behind them.
