@@ -1,0 +1,1361 @@
+Simple moving squares web page
+
+index.html :
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+
+        <script type="text/javascript" src="script.js">
+</script>
+
+    </head>
+
+    <body>
+
+        <div id="red"></div>
+
+        <div id="blue"></div>
+
+        <div id="yellow"></div>
+
+        <div id="green"></div>
+
+    </body>
+
+</html>
+
+stylesheet.css
+
+div {
+
+    height:100px;
+
+    width:100px;
+
+    display: inline-block;
+
+}
+
+
+#red {
+
+    background-color:#FF0000;
+
+}
+
+
+#blue {
+
+    background-color:#0000FF;
+
+}
+
+#yellow {
+
+    background-color:#E2BE22;
+
+}
+
+#green {
+
+    background-color:#008800;
+
+}
+
+$(document).ready(function() {
+
+   $('div').mouseenter(function() {
+
+       $(this).animate({
+
+           height: '+=10px'
+
+       });
+
+   });
+
+   $('div').mouseleave(function() {
+
+       $(this).animate({
+
+           height: '-=10px'
+
+       });
+ 
+   });
+
+   $('div').click(function() {
+
+       $(this).toggle(1000);
+
+   });
+ 
+});
+
+
+
+
+The Document Object Model
+
+To get the most out of jQuery, we should review how an HTML page is put together.
+
+An HTML document is structured according to the Document Object Model, or DOM. It's by interacting with the DOM that jQuery is able to access and modify HTML.
+
+The DOM consists of every element on the page, laid out in a hierarchical way that reflects the way the HTML document is ordered. Remember how we could think of the HTML document as a tree? You can think of the DOM the same way. Just as with an HTML document, elements in the DOM can have parents, children, and siblings.
+
+If you're a little hazy on what an HTML element is, what a CSS selector is, or what IDs and classes are, feel free to review these in the HTML and CSS track.
+
+Check out the code in script.js. We'll explain the code more soon, but for now the main idea is that when the HTML document loads, the code will select an HTML element and make it disappear.
+
+We'll want to target the div element here, so on line 2 inside the $( ), add "div". 
+
+index.html :
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+		<title></title>
+
+        <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+
+        <script type="text/javascript" src="script.js">
+</script>
+
+	</head>
+
+	<body>
+
+        <div></div>
+   
+	</body>
+
+</html>
+
+stylesheet.css :
+div {
+
+    height:100px;
+
+    width:100px;
+
+    background-color:#FF0000;
+
+    border-radius:5px;
+
+}
+
+script.js :
+$(document).ready(function() {
+
+    $("div").fadeOut(1000);
+
+});
+
+
+
+Changing Targets
+
+Don't be intimidated by the amount of code you're seeing�we'll go through it piece by piece to make sure you understand it thoroughly.
+
+Just like the CSS div refers to the HTML element <div>, the jQuery 'div' refers to the same HTML element <div>. You can think of the element name passed to jQuery as identical to the CSS element, only wrapped in quotes. So, for instance, you could target anything of class button with
+$('.button').someAction
+
+As you'll remember, .button in your CSS file is how you'd target anything of class="button" in your HTML file.
+
+
+Instructions
+
+Put a selector (remember CSS selectors?) inside $() so instead it points to the ID #green.
+
+index.html :
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+    	<title></title>
+
+        <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+
+        <script type="text/javascript" src="script.js">
+</script>
+
+	</head>
+
+	<body>
+
+        <div></div>
+
+        <div id="green"></div>
+
+	</body>
+
+</html>
+
+stylesheet.css :
+
+div {
+
+    height:100px;
+
+    width:100px;
+
+    background-color:#FF0000;
+
+    border-radius:5px;
+
+    margin-bottom:5px;
+
+}
+
+
+#green {
+
+    background-color:#008800;
+
+}
+
+script.js :
+
+$(document).ready(function() {
+
+    $('#green').fadeOut(1000);
+
+});
+
+
+What is jQuery?
+
+jQuery is a library, or set of helpful add-ons, to the JavaScript programming language. It may seem counterintuitive to learn how to use a library before learning the actual language, but there are a few good reasons for this.
+01. It takes a while to become comfortable with JavaScript, and it's trickier to manipulate HTML elements directly with JavaScript than with jQuery. In order to help you build awesome websites faster, we're starting you off with jQuery.
+02. jQuery provides a simple interface for the underlying JavaScript. It's easier for many users to learn jQuery first, then dive into the nitty-gritty JavaScript details later.
+03. jQuery is much better at giving you immediate, visual results than regular JavaScript. By the end of this lesson, you'll have built your own interactive button!
+
+
+Instructions
+
+On the script.js tab, add the missing pieces on line 2 so that your jQuery code calls fadeOut on the div with the ID #notready.
+
+index.html : 
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+		<title>What Say You?</title>
+
+        <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+
+        <script type="text/javascript" src="script.js"></script>
+
+	</head>
+
+	<body>
+
+        <div id="ready">I'm ready!</div>
+
+        <div id="notready">You'll never take me alive, jQuery!</div>
+
+	</body>
+
+</html>
+
+stylesheet.css
+
+div {
+
+    height:100px;
+
+    width:100px;
+
+    border-radius:5px;
+
+    display: inline-block;
+
+    text-align: center;
+
+    vertical-align: middle;
+
+    font-family: Verdana, Arial, Sans-Serif;
+
+    margin-right:5px;
+
+}
+
+
+#ready {
+
+    background-color:#008800;
+
+    color:#FFFFFF;
+
+}
+
+
+#notready {
+
+    background-color:#FF0000;
+
+    color:#FFFFFF;
+
+}
+
+script.js :
+
+$(document).ready(function() {
+
+    $("#notready").fadeOut(1000);
+
+});
+
+
+Linking Your HTML and JavaScript Files
+
+Great! Now we need to link our HTML page to our jQuery script so our jQuery magic will affect our HTML.
+
+Just like we need a <link> tag to connect our HTML and CSS, we need a <script> tag to connect our HTML and jQuery. The tag looks like this:
+<script type="text/javascript" src="script.js"></script>
+
+Note that the <script> tag is not self-closing; it requires a closing </script> tag.
+
+
+Getting Started
+
+Next, we'll need to start up our jQuery magic using the $(document).ready(); syntax you've seen. It works like this:
+� $() says, "hey, jQuery things are about to happen!"
+� Putting document between the parentheses tells us that we're about to work our magic on the HTML document itself.
+� .ready(); is a function, or basic action, in jQuery. It says "hey, I'm going to do stuff as soon as the HTML document is ready!"
+� Whatever goes in .ready()'s parentheses is the jQuery event that occurs as soon as the HTML document is ready.
+
+So,
+$(document).ready(something);
+
+says: "when the HTML document is ready, do something!" (We'll show you how to replace something with an action in the next exercise.)
+
+Note that .ready(); ends with a semicolon. This tells jQuery that you're done giving it a command.
+
+
+Instructions
+
+Add a $(document).ready(); call in script.js. Remember, the document is special: it's not an HTML element like <p> or <div>, so it doesn't go in quotes.
+
+
+The Functional Approach
+
+Perfect! Now we need to put something inside our ready() function.
+
+Remember, when we say "function," you can think "action." Functions are the basic unit of doing work in jQuery.
+
+For this reason, jQuery includes a function keyword. The syntax looks like this:
+function(){
+    jQuery magic;
+}
+
+If we add our function inside our .ready(), jQuery will run the code in our function as soon as the HTML document loads. The syntax would then look like this:
+$(document).ready(function() {
+    jQuery magic;
+});
+
+Remember, we end our jQuery statements with a semicolon.
+
+
+Electr(on)ic Slide
+
+Almost there! Now we just need to include an action in the body of our function. In this case, we'll make a header div for our HTML page slide into view.
+
+Between the {}s of our function(), we'll want to turn our div into a jQuery object so jQuery can manipulate it. Much like we use .ready() on $(document), we'll use the .slideDown() action on our div jQuery object.
+
+Inside .slideDown's parentheses, we'll want to tell it how quickly to slide down. Let's enter 'slow' (include the quotes).
+
+
+Instructions
+ 
+On line 2 in script.js, make 'div' into a jQuery object and call the .slideDown() action on it. Inside slideDown()'s parentheses, type 'slow' so jQuery knows how quickly to slide your div down.
+
+Your jQuery should look something like this:
+$(document).ready(function() {
+    $('div').action(howfast);
+});
+
+Where action is the slideDown action and howfast should be 'slow'.
+
+script.js :
+$(document).ready(function(){
+
+    $('div').slideDown('slow')
+
+
+});
+
+
+Get Yourself In...
+
+Great! Next, let's include our function keyword and two new actions together, mouseenter() and fadeTo().
+
+mouseenter() does what you might expect: it produces a change when your mouse enters a given HTML element. For example,
+$(document).ready(function() {
+    $('div').mouseenter(function() {
+        $('div').hide();
+    });
+});
+
+would hide every <div> on the page as soon as you mouse over one. (We'll find out how to affect just one <div> among many in the next lesson.) For now, we only have one <div>, so this setup is okay.
+
+Instead of hide(), however, we'll place fadeTo() inside mouseenter(). fadeTo() takes two arguments, or inputs, between its parentheses, separated by a comma: the speed at which to fade, and the opacity (or transparency) to fade to. For example,
+fadeTo('fast', 0.25);
+
+would quickly fade the target element to 25% of its original opacity, making it very light-colored.
+
+
+Instructions
+ 
+Using the examples above, make it so your 'div' fades to 1 (100%) opacity when your mouse enters the 'div'. Make the animation speed 'fast'. (Make sure to give fadeTo() its inputs in order�speed, then opacity.)
+
+script.js :
+
+$(document).ready(function(){
+
+    
+    $('div').mouseenter(function() {
+
+        
+        $('div').fadeTo('fast',1);
+
+        
+    });
+
+    
+});
+
+
+...and Get Yourself Out!
+
+Excellent! Your button looks great now�it stands out when the user mouses over it.
+
+However, you'll notice that when you take your cursor off the button, it stays dark. What we really want is for our button to become light again when our mouse leaves.
+
+You might have guessed that jQuery includes a mouseleave() action. If so, you're right! (If you're curious, you can learn more about these actions in the jQuery documentation.)
+
+
+Instructions
+ 
+Between the }); that ends your mouseenter() and the }); that ends your $(document).ready(), add a mouseleave() that uses fadeTo to return your div's opacity to 0.5. Like the previous fadeTo, it should have 'fast' as its first input.
+
+script.js :
+
+$(document).ready(function(){
+
+    
+    $('div').mouseenter(function() {
+
+        
+        $('div').fadeTo('fast',1);
+
+        
+    });
+
+    
+    $('div').mouseleave(function() {
+
+        
+        $('div').fadeTo('fast',0.5);
+
+        
+    });
+
+    
+});
+
+Functions are the basic unit of action in jQuery. The main entry point of most jQuery applications is a block of code that looks like this:
+$(document).ready(function() {
+    Do something
+});
+
+Let's go through it bit by bit.
+� $(document) is a jQuery object. The $() is actually a function in disguise; it turns the document into a jQuery object.
+� .ready() is a type of function; you can think of it as sort of a helper that runs the code inside its parentheses as soon as the HTML document is ready.
+� function(){} is the action that .ready() will perform as soon as the HTML document is loaded. (In the above example, the Do something placeholder is where those actions would go.)
+
+
+Functions, Part II: Functions Explained
+
+A function is made up of three parts: the function keyword, any inputs that function takes (they go between the ()s and are separated by commas if there are more than one), and whatever actions the function should perform (these go between the {}s). The general form is:
+function(input1, input2, etc) {
+    Do a thing
+    Do another thing
+    Do yet another thing!
+}
+
+One of the nice things about jQuery is that you can give a function just about anything as an input�even another function! That's why .ready() can take function between its parentheses; it's taking a function as input.
+
+(If you're interested, you can learn more about functions in the JavaScript track.)
+
+
+Instructions
+ 
+Check out the code in script.js. It includes a new jQuery action, .click(), that we'll learn more about soon!
+
+See how we pass functions to both .ready() and .click() as inputs? When you're ready, click Save & Submit Code, then click on the orange div in the Result tab to see the fadeOut() effect.
+
+$(document).ready(function() {
+
+    $('div').click(function() {
+
+        $('div').fadeOut('slow');
+
+    });
+
+});
+
+
+Variables
+
+Variables are a place for us to store information for use at a later time. Variables can hold any type of information you work with, so just think of them as containers.
+
+The single = sign is used to assign values. For instance, in jQuery, you can write
+var lucky = 7;
+var name = "Codecademy";
+var $p = $('p');
+
+Our first variable contains a number, 7, while the second variable contains some text, "Codecademy". Our 3rd variable stores the result of a jQuery selector $('p') in the variable $p . As you can see, this is just a handy way to save this information for later.
+
+Why would we do this? Well, up until now we haven't had to modify anything more than once. If we wanted to change the webpage based on new information, we would need to store that information in variables. Maybe you want to create a loading page and have it vanish as you receive that information. It'd be a good idea to use variables.
+
+
+Instructions
+
+Check out the preview window. All looks well and good, except for #4�that's nonsense!
+
+Create a variable called $target in script.js and use the = sign to assign it to the jQuery selector that represents #4 in the ordered list. When you run your code, it should fade away!
+
+Remember, you can modify things directly using an id or class.
+
+You may also modify things indirectly by using :nth-child() or :last-child
+
+// Write your jQuery code on line 3!
+
+$(document).ready(function() {
+
+    
+    var $target = $('li:nth-child(4)');
+
+    $target.fadeOut('fast');
+
+        
+});
+
+or :
+
+// Write your jQuery code on line 3!
+
+$(document).ready(function() {
+
+    
+    var $target = $('li:last-child');
+
+    $target.fadeOut('fast');
+
+        
+});
+
+or : modify the li tag to have an id or class and reference that.  So if i give the final li tag an id of "bad" i can then make my
+jscript this :
+
+// Write your jQuery code on line 3!
+
+$(document).ready(function() {
+
+    
+    var $target = $('#bad');
+
+    $target.fadeOut('fast');
+
+        
+});
+
+
+Moving Elements Around
+
+Moving elements around in the DOM is a snap—all we need to do is use the jQuery functions we just learned on existing elements instead of creating new ones.
+var $paragraph = $("p"); // existing element
+$("div").after($paragraph); // Move it!
+// Same as:
+$("div").after($("p"));
+
+01. We can select an element using $("p") and assign it to a variable
+02. We can move the position in the DOM by using the variable in our after() statement 
+
+Note: This does not copy the element from one location to another, it moves the original element effectively saving you from having to delete the original
+
+
+Instructions
+ 
+01. In script.js, add a new line below your code to move your <p> tag after the <div> with id #one 
+02. create a new jQuery selector that targets the <div> with the id #two
+03. Using after again, select the <p> tag you created and move it after the <div> with id #two
+
+$(document).ready(function() {
+
+    $('#one').after('<p>A paragraph</p>');
+    
+    $('#two').after($("p"));
+
+});
+
+
+Removing Elements
+
+Adding elements to our HTML documents is great, but without the ability to remove them, our pages can quickly become cluttered. Thankfully, we have two jQuery functions, .empty() and .remove(), that help us delete content from our pages.
+
+.empty() deletes an element's content and all its descendants. For instance, if you .empty() an 'ol', you'll also remove all its 'li's and their text.
+
+.remove(), not only deletes an element's content, but deletes the element itself.
+
+
+Instructions
+
+Go ahead and .remove() your <p> tag from the HTML document.
+
+$(document).ready(function() {
+
+    $('#one').after('<p>A paragraph</p>');
+    
+    $('#two').after($("p"));
+    
+    $('p').remove();
+
+});
+
+
+Adding and Removing Classes
+
+We don't have to limit ourselves to adding or removing entire elements, though—we can fine-tune our jQuery superpowers to alter classes, CSS, and even the contents of our HTML elements.
+
+Let's start with classes. jQuery includes two functions, .addClass() and .removeClass(), that can be used to add or remove a class from an element. This is great if, for example, you have a highlighted class that you want to apply to an element when clicked.
+
+The syntax looks like this:
+$('selector').addClass('className');
+$('selector').removeClass('className');
+
+where 'selector' is the HTML element you want and 'className' is the class name you want to add or remove.
+
+Remember: You aren't selecting anything, you are modifying your element. This means that you do not need # or . before your class.
+
+Instructions
+ 
+
+Now that we think of it, that highlighted class seems like a great idea. We've supplied the HTML and CSS; in the script.js tab, add the jQuery code necessary to make your #text div highlighted when clicked!
+
+$(document).ready(function() {
+
+    $('#text').click(function() {
+
+        $('#text').addClass('highlighted');
+
+    });
+
+});
+
+
+Toggling Classes
+
+What if we want to toggle a class back and forth, though? That is, what if we want jQuery to automatically check to see whether our #text is .highlighted, so that when we click on it, it adds the class if it isn't there and removes it if it is?
+
+As you probably guessed, jQuery includes a .toggleClass() function that does exactly this. If the element it's called on has the class it receives as an input, .toggleClass() removes that class; if the target element doesn't have that class, .toggleClass() adds it.
+
+$(document).ready(function() {
+
+    $('#text').click(function() {
+
+        $('#text').toggleClass('highlighted');
+
+    });
+
+});
+
+
+
+Changing Your Style
+
+What if we want to fine-tune individual CSS property values, though? Remember style="height:300px; width:300px;"? jQuery makes it a snap!
+
+Because resizing elements is so common, jQuery has specific .height() and .width() functions that can be used to change the heights and widths of HTML elements. For instance:
+ 
+   $("div").height("100px");
+    $("div").width("50px");
+
+would give all <div>s on the page a height of 100 pixels and a width of 50 pixels.
+
+jQuery also includes a general-purpose .css() function that takes two inputs: the first is the CSS element to alter, and the second is the value to set it to. For example:
+
+    $("div").css("background-color","#008800");
+
+would give all <div>s on the page a green background color. You can modify any element's CSS attributes this way.
+
+
+Instructions
+ 
+Let's get some practice in. Change the <div> in our HTML document so it has a height of 200 pixels, a width of 200 pixels, and a border-radius of 10 pixels. Let's make this happen immediately, without the need for a click.
+
+$(document).ready(function() {
+
+    $('div').height("200px");
+
+    $('div').width("200px");
+
+    $('div').css("border-radius","10px");
+
+});
+
+
+Modifying Content
+
+Finally, we can update the contents of our HTML elements—that is, the bit between the opening and closing tags—using the .html() and .val() functions.
+
+.html() can be used to set the contents of the first element match it finds. For instance,
+
+$('div').html();
+
+will get the HTML contents of the first div it finds, and
+
+$('div').html("I love jQuery!");
+
+will set the contents of the first div it finds to "I love jQuery!"
+
+.val() is used to get the value of form elements. For example,
+
+$('input:checkbox:checked').val();
+
+would get the value of the first checked checkbox that jQuery finds.
+
+
+Instructions
+
+We've added a paragraph to our HTML document. Use the .html() function to set its text to "jQuery magic in action!" (Don't forget the exclamation point!)
+
+$(document).ready(function() {
+
+    $('p').html("jQuery magic in action!");
+
+});
+
+(With reference to an example to create a To Do list in html.  This has a place for a user to enter values and an add button to add those values to a list.)
+
+You'll notice we've set up an HTML form for grabbing the user's input. We'll need to store the user's input in a variable, which will allow us to append that input to the body of the HTML document later on.
+
+You can set a variable equal to the contents of the input field using .val(), like so:
+//Get the value from an input
+var input = $('input[name=checkListItem]').val();
+
+01. Our selector finds our specific input using a css selector on our checkListItem input
+02. We call val() to get the value of the field
+
+
+Instructions
+ 
+01. Let's create a .click() event handler for our #button element
+02. Make sure you pass it a function(){}
+03. Inside your function(){} create the variable toAdd and set it equal to the contents of the input field.
+
+$(document).ready(function() {
+
+    $('#button').click(function() {
+
+        var toAdd = $('input[name=checkListItem]').val();
+
+    });
+
+});
+
+
+Append to Body
+
+Perfect! Now we want to add our HTML element to the document. We can do this using our handy .append() function.
+
+Let's go ahead and append to our div with the .list class. We'll append a <div> with class="item", since we'll want a way to target our appended <div>s later when we remove them. (A "to do" list is no good if we can't check things off it.) 
+
+We'll want the contents of our div to be the contents of our input field, which we saved in the variable toAdd. That means when we append, we'll want to append
+
+'<div class="item">' + toAdd + '</div>'
+
+
+Instructions
+
+Go ahead and .append() a <div> with class="item" to the .list div of your HTML document
+
+$(document).ready(function() {
+
+    $('#button').click(function() {
+
+        var toAdd = $('input[name=checkListItem]').val();
+
+        $('.list').append('<div class="item">' + toAdd + '</div>');
+
+    });
+
+});
+
+
+Remove What's Been Clicked
+
+Great job! Finally, we want to be able to check items off our list.
+
+You might think we could do this:
+
+$('.item').click(function() {
+    $(this).remove();
+});
+
+and that's not a bad idea. The problem is that it won't work—jQuery looks for all the .items when the DOM is loaded, so by the time your document is ready, it's already decided there are no .items to .remove(), and your code won't work.
+
+For this, we'll need a new event handler: .on(). You can think of .on() as a general handler that takes the event, its selector, and an action as inputs. The syntax looks like this:
+
+$(document).on('event', 'selector', function() {
+    Do something!
+});
+
+In this case, 'event' will be 'click', 'selector' will be '.item', and the thing we'll want to do is call .remove() on this.
+
+
+Instructions
+ 
+Complete your program by adding the .on() event handler as described above. It should go inside your $(document).ready(), but after and outside your $('#button').click().
+
+$(document).ready(function() {
+
+    $('#button').click(function() {
+
+        var toAdd = $('input[name=checkListItem]').val();
+
+        $('.list').append('<div class="item">' + toAdd + '</div>');
+
+    });
+
+    $(document).on('click','.item',function() {
+
+        $(this).remove();
+
+});
+
+});
+
+
+Review of jQuery Events
+
+You know a lot about jQuery events already, but it never hurts to review the basics.
+
+The setup almost always looks like this:
+
+$(document).ready(function() {
+    $('thingToTouch').event(function() {
+        $('thingToAffect').effect();
+    });
+});
+
+where "thing to touch" is the HTML element you'll click on, hover over, or otherwise interact with, and "thing to affect" is the HTML element that fades away, changes size, or undergoes some other transformation.
+
+Sometimes these elements are one and the same—you might hover over a <div> to change its opacity. Other times, you might interact with a separate element; for example, you might click on a button to resize a <div>.
+
+Sometimes if you want an effect to occur right away, without an event like .click() or .hover(), you'll skip the second line in the above:
+
+$(document).ready(function() {
+    $('thingToAffect').effect();
+});
+
+
+Combining .click() and .hover()  (This is the final part of a series of lessons tying together various aspects of the coding learned.  This final part is notable because it uses to different functions on the div selector.)
+
+Let's add one more jQuery event to our "destruction of Krypton" simulation. Krypton didn't just vanish, it exploded! Let's make it turn red.
+$('div').hover(function(){
+  $('div').addClass('green');
+});
+
+01. Following the pattern we have been learning, we target Krypton, our $('div')
+02. We then apply our hover event to our target. 
+03. Finally, we execute the code inside the function(){} which adds a class of green to our target.
+
+$(document).ready(function() {
+
+    $('div').click(function() {
+
+        $(this).fadeOut('fast',0);
+
+    });
+
+    $('div').hover(function() {
+
+        $(this).addClass('red');
+
+    });
+
+});
+
+The .dblclick() event - An event handler that checks for a double click! (pretty much the same as click!)
+
+$(document).ready(function() {
+
+    $('div').dblclick(function() {
+
+        $(this).fadeOut('fast');
+
+	});
+
+});
+
+
+Hover
+
+What if you wanted to create an effect when your mouse is on top of an object, then have that effect vanish when your mouse moved away? You might notice this effect in use on many site's navigation bars!
+
+$('div').hover(
+    function(){
+      $(this).addClass('highlight');
+   },
+   function(){
+      $(this).removeClass('highlight');
+   }
+);
+
+01. We first select the element we want to modify $('div')
+02. Secondly notice that our hover effect is able to take two functions(){} separated by a comma. The comma is very important!
+03. The first function(){} we pass will be run when we first mouse over our target. Here we apply a class of highlight
+04. The second function(){} will be called when our mouse leaves the object. This is where we remove the class highlight
+
+Your second function(){} doesn't have to be the opposite of the first function(){}, but it would be very common!
+
+
+Instructions
+ 
+We're ready to apply a hover effect to our site's navigation bar
+01. In script.js use your selector to target our menu items
+02. When we hover over the menu item, let's apply a class of active
+03. When our mouse leaves the menu item, let's remove the active class
+
+$(document).ready(function() {
+
+
+  $('div').hover(
+
+    function() {
+
+        $(this).addClass('active');
+
+    },
+
+    function() {
+
+        $(this).removeClass('active');
+
+    }
+
+  );
+
+
+});
+
+
+Let's .focus()!
+
+Another event we can make use of is .focus(). We say an element has focus when we click on it or tab over to it. If you've ever filled out a form on a web page and seen how each text box lights up when you tab to it or click on it, you've seen focus in action!
+
+The .focus() event handler only works on elements that can receive focus—the list of these elements is a bit vague, but HTML elements like <textarea>s and <input>s are the usual suspects.
+
+Check out the form we've set up in the Result tab. If you click on the input field, you'll see it automatically highlights in a delightful baby blue. Too bad baby blue is for babies! We want our highlighting to be red.
+
+We can do this with two tools: .focus() and our .css() function from the last section. We want to write a bit of jQuery code that will change our 'input''s 'outline-color' to 'red' when it gains focus.
+
+
+Instructions
+
+In script.js, get your document .ready(). Do two things:
+01. Turn 'input' into a jQuery element and call the .focus() event handler on it.
+02. Inside your event handler function, call .css() on your 'input' element and pass it two inputs: the CSS element to change ('outline-color') and the color to change it to ('#FF0000').
+03. Not all browsers have equal CSS implementation. So for this lesson, if you are using Firefox, you will need to first change the outline-style to solid. 
+
+$(document).ready(function() {
+
+    $('input').focus(function() {
+
+        $(this).css("outline-color","#FF0000");
+
+    });
+
+});
+
+
+The .keydown() Event
+
+You're not limited to mouse events in jQuery—you can trigger events using the keyboard, as well!
+
+The .keydown() event is triggered whenever a key on the keyboard is pressed. It only works on whatever page element has focus, so you'll need to click on the window containing your div before pressing a key in order for you to see its effects.
+
+Let's go ahead and combine our new event with a new effect: .animate()! We'll use this to move an object on the screen whenever we press a key.
+
+The .animate() effect takes two inputs: the animation to perform, and the time in which to perform the animation. Here's an example:
+
+$(document).ready(function() {
+   $('div').animate({left:'+=10px'},500);
+});
+
+This will take the first div it finds and move it ten pixels to the right. Remember, increasing the distance from the left margin moves something to the right; the += bit is just a shorthand for "take the existing number and add ten to it." In this case, it add ten pixels to the current distance from the left margin.
+
+
+Instructions
+ 
+After setting up with $(document).ready(), call the .keydown() event on $(document). (We want the whole document object to respond whenever a key is pressed.)
+
+Inside your .keydown() handler, .animate() your 'div' with the same inputs as above: {left:'+=10px'} and 500.
+
+$(document).ready(function() {
+
+    $(document).keydown(function() {
+
+        $('div').animate({left:'+=10px'},500);
+
+    });
+
+});
+
+
+Filling Out the Cases
+
+Great work! Now it's time to animate our character based on the user's input from the keyboard. 
+
+Every key press on a keyboard is translated into a number for the computer to use. Don't worry about memorizing them, for now we've given you the basics in script.js
+// Left arrow key pressed
+case 37:
+  ('img').animate({left: "-=10px"}, 'fast');
+
+01. The left arrow key on our keyboards translates to number 37 to the computer. When that key is pressed, we animate our image to the left by subtracting 10px
+02. To move up we subtract 10px from the top
+03. To move right we add 10px to the left 
+04. Finally, to move down we add 10px to the top
+
+Can you fill in Up, Down, and Right? What happens if you add pixels +=10px instead of subtracting?
+
+$(document).ready(function() {
+
+    $(document).keydown(function(key) {
+
+        switch(parseInt(key.which,10)) {
+
+			// Left arrow key pressed
+
+			case 37:
+
+				$('img').animate({left: "-=10px"}, 'fast');
+
+				break;
+
+			// Up Arrow Pressed
+
+			case 38:
+
+				$('img').animate({top: "-=10px"}, 'fast');
+
+				break;
+
+				// Put our code here
+
+				break;
+
+			// Right Arrow Pressed
+
+			case 39:
+
+				$('img').animate({left: "+=10px"}, 'fast');
+
+				break;
+			    
+				// Put our code here
+
+				break;
+
+			// Down Arrow Pressed
+
+			case 40:
+
+				$('img').animate({top: "+=10px"}, 'fast');
+
+				break;
+			    
+				// Put our code here
+
+				break;
+
+		}
+
+	});
+
+});
+
+
+Introducing: jQuery UI
+
+All right! Time to blaze new jQuery trails with a new jQuery library: jQuery UI.
+
+jQuery UI includes a number of ultra-fancy animations you can use to make your websites do incredible things.
+
+For instance, remember when we lamented that jQuery didn't include a .blowUp() effect for our planet Krypton? Well, that's still true. But jQuery UI has an .effect() effect, and we are totally going to give it the input 'explode'.
+
+Note that we've included an extra <script> tag in our HTML documents; this is used to include jQuery UI in our webpages. We don't have to do this with regular jQuery, since Codecademy automatically includes it for us.
+
+
+Instructions
+
+In the script.js tab, get your document .ready() and pass in a .click() event handler on your 'div'. Inside that, call .effect() on your div and give it the input 'explode'.
+
+$(document).ready(function() {
+
+    $('div').click(function() {
+
+        $(this).effect('explode');
+
+    });
+
+});
+
+
+.bounce()
+
+Cool, right? But we can do much more than just blow things up.
+
+Another possible effect is 'bounce'. We give this as an input to .effect() just like 'explode', but we add an extra input to tell it how many times to bounce. This code will make our target 'div' bounce twice in 200 milliseconds:
+$('div').effect('bounce', {times:2}, 200);
+
+
+Instructions
+
+Change your 'explode' to a bounce, and make it so Krypton bounces three times in 500 milliseconds when you click on it.
+
+$(document).ready(function() {
+
+    $('div').click(function() {
+
+        $(this).effect('bounce',{times:3},500);
+
+    });
+
+});
+
+
+.slide()
+
+We can also make Krypton .slide() into view. Not surprisingly, we do this by calling the .effect() effect and passing in 'slide' as an input.
+
+If you want to see everything jQuery UI can do, you can check out the documentation here!
+
+
+Instructions
+
+Go ahead and change your 'bounce' to a 'slide', and remove the other two inputs.
+
+$(document).ready(function() {
+
+    $('div').click(function() {
+
+        $(this).effect('slide');
+
+    });
+
+});
+
+Something cool : Accordian
+
+index.html :
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+    	<title>Behold!</title>
+
+        <link rel='stylesheet' type='text/css' href='http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css'/>
+
+        <script type='text/javascript' src='script.js'>
+</script>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js">
+</script>
+
+	</head>
+
+	<body>
+
+        <div id="menu">
+
+           <h3>jQuery</h3>
+
+            <div>
+
+                <p>jQuery is a JavaScript library that makes your websites look absolutely stunning.</p>
+
+            </div>
+
+            <h3>jQuery UI</h3>
+
+            <div>
+                <p>jQuery UI includes even more jQuery goodness!</p>
+
+            </div>
+
+            <h3>JavaScript</h3>
+
+            <div>
+
+                <p>JavaScript is a programming language used in web browsers, and it's what powers jQuery and jQuery UI. You can learn about JavaScript in the <a href="http://www.codecademy.com/tracks/javascript" target="blank" style="text-decoration:none; color:#F39814">JavaScript track</a> here on Codecademy.</p>
+
+            </div>
+
+        </div>
+
+	</body>
+
+</html>
+
+And here's the magic :
+
+script.js :
+
+$(document).ready(function() {
+
+    $("#menu").accordion({collapsible: true, active: false});
+
+});
+
+
+Drag Racing
+
+jQuery UI includes a .draggable() function that can make any HTML element draggable—you can click on it and move it anywhere on the page!
+
+We thought you might be tired of <div> blocks, so we made you a CSS car. We worked super hard on it.
+
+$(document).ready(function() {
+
+    $('#car').draggable();
+
+});
+
+
+One Resize Fits All
+
+You didn't love our mega sweet car? We slaved over that for months! Back to regular <div>s for you!
+
+(Just kidding. That little guy took us decades of hard work.)
+
+$(document).ready(function() {
+
+    $('div').resizable();
+
+});
+
+
+A Greater Selection
+
+Images and <div>s aren't the only elements we can target with jQuery UI—we can also enhance our ordered and unordered lists.
+
+Check out the HTML in index.html. We've set up a pretty nifty ordered list, but when it shows up in the Result tab, it's a little bland. With jQuery UI, we can fix that!
+
+
+Instructions
+
+In the script.js tab, get your document .ready() and call the .selectable() function on your 'ol'.
+
+$(document).ready(function() {
+
+    $('ol').selectable();
+
+});
+
+
+Let's Sort Things Out
+
+Lists are great, and jQuery UI makes them greater. While selecting is cool, it doesn't necessarily make our list as dynamic as we'd like—what if we want to reorder the elements in our list?
+
+Enter the .sortable() function.
+
+
+Instructions
+
+In the script.js tab, replace your .selectable() with a .sortable().
+
+$(document).ready(function() {
+
+    $('ol').sortable();
+
+});
+
+Create a variable called $target in script.js and use the = sign to assign it to the jQuery selector that represents #4 in the ordered list. When you run your code, it should fade away!
+
+// Write your jQuery code on line 3!
+
+
+$(document).ready(function() {
+
+    
+    var $target = $('#bad');
+  <--- #bad is the jQuery Selector (in this example)
+    $target.fadeOut('fast');
+
+        
+});
+
+Create a variable $div, and assign it to a div jQuery object using =. No need to use $(document).ready() or any additional code!
+
+var $div = $('div');
+
+The $ in the $div is just notation to make it easier to determine that what's it's referring to is jQuery object.  There doesn't have to be $ there at all in that particular instance (creating a variable)
+
+Breaking it down a bit
+
+$(document).ready(function() {
+    $('div').hide();
+});
+
+we're passing .ready() a function (which itself takes no inputs; that's why its () are empty) and that function's job is to .hide() the div jQuery object.
+
+The this keyword refers to the jQuery object you're currently doing something with. Its complete rules are a little tricky, but the important thing to understand is if you use an event handler on an element—that's the fancy name for actions like .click() and .mouseenter(), since they handle jQuery events—you can call the actual event that occurs (such as fadeOut()) on $(this), and the event will only affect the element you're currently doing something with (for example, clicking on or mousing over).
+
+$(document).ready(function() {
+
+    $('#one').after('<p>A paragraph</p>');
+
+    $('<p>').after($('#one'));
+
+    var $hashtwo = $('#two');
+
+    $('<p>').after($hashtwo);
+
+});
+
+
+
+$(document).ready(function() {
+
+    $('#one').after('<p>hello</p>');
+
+    $('#two').after('<p>hello</p>');
+
+});
+
+
+
+$(document).ready(function() {
+
+    $('#one').after('<p>A paragraph</p>');
+
+    $('#two').after($('p'));
+
+});

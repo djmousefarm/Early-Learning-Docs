@@ -1,0 +1,2168 @@
+javascript notes :
+
+So many new terms, so much syntax. Let's take a breather and review. We have learned:
+
+1. Confirm and prompt
+
+ We can make pop-up boxes appear! 
+confirm("I am ok");
+prompt("Are you ok?");
+
+2. Data types
+
+ a. numbers (e.g. 4.3, 134)
+
+ b. strings (e.g. "dogs go woof!", "JavaScript expert")
+
+ c. booleans (e.g. false, 5 > 4) 
+
+3. Conditionals
+
+If the first condition is met, execute the first code block. If it is not met, execute the code in the else block. See the code on the right for another example.
+
+
+1. First 3 letters of "Batman"
+"Batman".substring(0,3);
+
+ 2. From 4th to 6th letter of "laptop"
+"laptop".substring(3,6);
+
+Functions in Javascript
+
+An example of a basic function:
+
+// This is what a function looks like:
+
+
+var divideByThree = function (number)        // This line declares the function and gives it a name
+{                                            // The code within curly brackets is what gets run when the function is called
+    var val = number / 3;
+                    // This declares a variable called val
+    console.log(val);                        // This prints the variable
+};
+
+
+// On line 12, we call the function by name
+
+// Here, it is called 'dividebythree'
+
+// We tell the computer what the number input is (i.e. 6)
+
+// The computer then runs the code inside the function!
+
+divideByThree(5);
+
+Another example of a function : 
+
+var sayHello = function(name) 
+{
+    console.log('Hello ' + name);
+};
+
+01. First we declare a function using var, and then give it a name sayHello. The name should begin with a lowercase letter and the convention is to use lowerCamelCase where each word (except the first) begins with a capital letter.
+02. Then we use the function keyword to tell the computer that you are making a function
+03. The code in the parentheses is called a parameter. It's a placeholder word that we give a specific value when we call the function.
+04. Then write your block of reusable code between { }. Every line of code in this block must end with a ;.
+
+You can run this code by "calling" the function, like this:
+
+sayHello("Emily");
+
+Calling this function will print out Hello Emily.
+
+And once more :
+
+Let's break down exactly how a computer thinks when it sees the code for a function. 
+var functionName = function( ) 
+{
+    // code code code
+    // code code code
+    // (more lines of code)
+};
+
+01. The var keyword declares a variable named functionName.
+02. The keyword function tells the computer that functionName is a function and not something else.
+03.  Parameters go in the parentheses. The computer will look out for it in the code block.
+04.  The code block is the reusable code that is between the curly brackets { }. Each line of code inside { } must end with a semi-colon.
+05.  The entire function ends with a semi-colon.
+
+To use the function, we call the function by just typing the function's name, and putting a parameter value inside parentheses after it. The computer will run the reusable code with the specific parameter value substituted into the code.
+
+Now, when we call a function, we don't always want to just print stuff. Sometimes, we just want it to return a value. We can then use that value (ie. the output from the function) in other code. Let's learn about the return keyword, then we'll see how to use functions with an if / else statement in the next exercise!
+
+The return keyword simply gives the programmer back the value that comes out of the function. So the function runs, and when the return keyword is used, the function will immediately stop running and return the value.
+
+Functions with two parameters
+
+So far we've only looked at functions with one parameter. But often it is useful to write functions with more than one parameter. For example, we can have the following function:
+
+var areaBox = function(length, width) 
+{
+    return length * width;
+};
+
+With more than one parameter, we can create more useful functions
+
+To call a function with more than one parameter, just enter a value for each parameter in the parentheses. For example, areaBox(3,9); would return the area of a box with a length of 3 and a width of 9.
+
+Functions and scope
+
+Global vs Local Variables
+
+Let's talk about an important concept: scope. Scope can be global or local.
+
+Variables defined outside a function are accessible anywhere once they have been declared. They are called global variables and their scope is global.
+
+For example:
+var globalVar = "hello";
+
+var foo = function() {
+    console.log(globalVar);  // prints "hello"
+}
+
+The variable globalVar can be accessed anywhere, even inside the function foo.
+
+Variables defined inside a function are local variables. They cannot be accessed outside of that function. 
+
+For example:
+var bar = function() {
+    var localVar = "howdy";
+}
+
+console.log(localVar);  // error
+
+The variable localVar only exists inside the function bar. Trying to print localVar outside the function gives a error.
+
+Check out the code in the editor. Until now you've been using the var keyword without really understanding why. The var keyword creates a new variable in the current scope. That means if var is used outside a function, that variable has a global scope. If var is used inside a function, that variable has a local scope.
+
+Below is the general syntax of the for loop. We want to focus on the first line in the next few exercises.
+
+Syntax
+for (var i = 1; i < 11; i = i + 1) 
+{
+    /* your code here */;
+}
+
+Every for loop makes use of a counting variable. Here, our variable is called i (but it can have any name). The variable has many roles. The first part of the for loop tells the computer to start with a value of 1 for i. It does this by declaring the variable called i and giving it a value of 1. 
+
+When the for loop executes the code in the code block�the bit between { }�it does so by starting off where i = 1.
+
+A note about incrementing in for loops :
+
+
+Controlling the for loop
+
+a. A more efficient way to code to increment up by 1 is to write i++.
+b. We decrement down by 1 by writing i--.
+c. We can increment up by any value by writing i += x, where x is how much we want to increment up by. e.g., i += 3 counts up by 3s.
+d. We can decrement down by any value by writing i -= x. (See the Hint for more.)
+e. Be very careful with your syntax�if you write a loop that can't properly end, it's called an infinite loop. It will crash your browser!
+
+While Loops
+
+var coinFace = Math.floor(Math.random() * 2);
+
+
+while(coinFace === 0)
+{
+
+	console.log("Heads! Flipping again...");
+
+	var coinFace = Math.floor(Math.random() * 2);
+
+}
+
+console.log("Tails! Done flipping.");
+
+While syntax
+
+The while loop is ideal when you want to use a loop, but you don't know how many times you'll have to execute that loop.
+
+In the example you just saw, the computer was randomly flipping a coin: while the coin came up heads (when coinFace equalled 0), it would flip again, and it would stop flipping once it got tails (when coinFace was 1). Since the flip was random, we didn't know ahead of time how many loops we'd need.
+
+The syntax looks like this:
+while(condition){
+    // Do something!
+}
+
+As long as the condition evaluates to true, the loop will continue to run. As soon as it's false, it'll stop. (When you use a number in a condition, as we did earlier, JavaScript understands 1 to mean true and 0 to mean false.)
+
+var answer = prompt("Pick a number between 1 and 2!");
+
+
+switch(answer) {
+
+  case '1':
+
+    console.log("Too low!");
+
+    break;
+
+  case '2':
+
+    console.log("Too high!");
+
+    break;
+
+  default :
+
+    console.log("Wrong number!");
+
+    break;
+
+}
+
+JUMPING BEAN!!
+
+var user = prompt("There's a jumping bean bouncing around.  Do you CATCH it? BOUNCE with it? Or IGNORE it?").toUpperCase();
+
+
+
+switch(user)
+ {
+
+  case 'CATCH':
+
+      var hands = prompt("You try to catch the jumping bean.  Do you have BIG hands or SMALL ones?").toUpperCase();
+
+      var speed = prompt("How quick are you? FAST or SLOW?").toUpperCase();
+
+      if(hands==="BIG" && speed==="FAST")
+
+      {
+
+          console.log("The combination of your big hands and fast reflexes have allowed you to catch the bean!");
+
+          break;
+
+      }
+
+      else if (hands==="BIG" || speed==="FAST")
+
+      {
+
+          console.log("Not quite good enough to catch the jumping bean! It's got away!");
+
+          break;
+
+      }
+
+      else
+
+      {
+
+          console.log("The jumping bean bounces up and down on your tiny handed, slow moving face.");
+
+          break;
+
+      }
+
+      break;
+
+  case 'BOUNCE' :
+
+      var high = prompt("How high can you bounce? REALLY high or VERY high?").toUpperCase();
+
+      var long = prompt("How long can you bounce for? FOREVER or NOT LONG?").toUpperCase();
+
+      if (high==="REALLY" || long==="FOREVER")
+
+      {
+
+          console.log("The jumping bean is very happy to have such a good jumping companion!");
+
+      }
+
+      else
+
+      {
+
+          console.log("The jumping bean snorts derisively at you and jumps away.  Leaving you all alone.  Again.");
+
+      }
+
+      break;
+
+  case 'IGNORE' :
+
+      console.log("The jumping bean just jumps away... but then comes back.  Stops jumping.  And just stares at you.");
+
+      break;
+
+  default :
+
+      break;
+
+      
+}
+
+
+Heterogeneous arrays
+
+Now that we've reviewed some array basics, it's time to cover a little new ground.
+
+First, it's not necessary for you to put the same type of data in an array! For instance, you don't have to have
+var pronouns = ["I", "you", "we"];
+var numbers = [1, 2, 3];
+
+You can have a heterogeneous array, which means a mixture of data types, like so:
+var mix = [42, true, "towel"];
+
+Arrays of arrays
+
+Good! The next thing to know is that not only can you put a mixture of types in an array, you can even put other arrays inside arrays. You can make a two-dimensional array by nesting arrays one layer deep, like so:
+var twoDimensional = [[1, 1], [1, 1]];
+
+This array is two-dimensional because it has two rows that each contain two items. If you were to put a new line between the two rows, you could log a 2D object—a square—to the console, like so:
+[1, 1]
+[1, 1]
+
+Jagged arrays
+
+Great work! That's a fine-looking multidimensional array you've got there. (Yours is nested once, so it's a two-dimensional array, but if you really wanted, you could put arrays inside arrays inside arrays for even more dimensions.)
+
+Sometimes you want arrays that aren't as nice and even as your 3 x 3 two-dimensional array: you may have three elements in the first row, one element in the second row, and two elements in the third row. JavaScript allows those, and they're called jagged arrays.
+
+OBJECTS!!!
+
+Nouns and verbs together
+
+Let's go back to the analogy of computer languages being like regular spoken languages. In English, you have nouns (which you can think of as "things") and verbs (which you can think of as "actions"). Until now, our nouns (data, such as numbers, strings, or variables) and verbs (functions) have been separate.
+
+No longer!
+
+Using objects, we can put our information and the functions that use that information in the same place.
+
+You can also think of objects as combinations of key-value pairs (like arrays), only their keys don't have to be numbers like 0, 1, or 2: they can be strings and variables.
+
+Here's an example of an object:
+
+var phonebookEntry = {};
+
+
+phonebookEntry.name = 'Oxnard Montalvo';
+
+phonebookEntry.number = '(555) 555-5555';
+
+phonebookEntry.phone = function()
+ {
+
+  console.log('Calling ' + this.name + ' at ' + this.number + '...');
+
+ };
+
+
+
+phonebookEntry.phone();
+
+Object syntax
+
+The phonebookEntry object handled data (a name and a telephone number) as well as a procedure (the function that printed who it was calling).
+
+In that example, we gave the key name the value 'Oxnard Montalvo' and the key number the value '(555) 555-5555'. An object is like an array in this way, except its keys can be variables and strings, not just numbers.
+
+Objects are just collections of information (keys and values) between curly braces, like this:
+var myObject = {
+    key: value,
+    key: value,
+    key: value
+};
+
+So here's an even more basic object : 
+
+var me = {
+
+    name : "Bob",
+
+    age : 40
+
+};
+
+Creating a new object
+
+There are two ways to create an object: using object literal notation (which is what you just did) and using the object constructor.
+
+Literal notation is just creating an object with curly braces, like this:
+var myObj = {
+    type: 'fancy',
+    disposition: 'sunny'
+};
+
+var emptyObj = {};
+
+When you use the constructor, the syntax looks like this:
+var myObj = new Object();
+
+This tells JavaScript: "I want you to make me a new thing, and I want that thing to be an Object.
+
+You can add keys to your object after you've created it in two ways:
+myObj["name"] = "Charlie";
+myObj.name = "Charlie";
+
+Both are correct, and the second is shorthand for the first. See how this is sort of similar to arrays?
+
+So another example of an object would be (does the same thing as the last example):
+
+var me = new Object();
+
+
+me.name = "Bob";
+
+me.age = 40;
+
+Objects within Objects!!
+
+You can add objects directly to friends, like this:
+var friends = {
+    bill: {},
+    steve: {}
+};
+
+Or with the bracket ([]) or dot(.) notation, like this:
+friends[bill] = {};
+friends.steve = {};
+
+Or with Object constructors, like this:
+var friends = new Object();
+
+friends.bill = new Object();
+friends.steve = new Object();
+
+But putting objects within objects this way creates some rather messy looking code!
+
+var friends = new Object();
+
+friends.bill=new Object();
+
+friends.bill.firstName="Bill";
+
+friends.bill.lastName="Gates";
+
+friends.bill.number=1;
+
+friends.steve=new Object();
+
+friends.steve.firstName="Steve";
+
+friends.steve.latName="Jobs";
+
+friends.steve.number=2;
+
+
+This is probably a tidier way to do it, but there's still a little repitition;
+
+var friends = {
+
+bill : {
+
+    firstName:"Bill",
+
+    lastName:"Gates",
+
+    number:1
+
+}
+
+};
+
+var friends = {
+
+steve : {
+
+    firstName:"Steve",
+
+    lastName:"Jobs",
+
+    number:2
+
+}
+
+};
+
+Here's a little aside. For/in loops : 
+
+To do this, we'll want to use a bit of new syntax: a for/in loop.
+
+It looks like this:
+for (var key in object) {
+  // Access that key's value
+  // with object[key]
+}
+
+The "key" bit can be any placeholder name you like. It's sort of like when you put a placeholder parameter name in a function that takes arguments.
+
+An example of it in use:
+
+var list = function(obj)
+ {
+
+  for(var prop in obj)
+ {
+
+    console.log(prop);
+
+  }
+
+};
+
+BACK TO OBJECTS!!
+
+To declare an object you just do this : 
+
+var bob = {
+  age : 40,
+  country : "United Kingdom"
+};
+
+Each piece of information we include in an object is known as a property. Think of a property like a category label that belongs to some object. When creating an object, each property has a name, followed by : and then the value of that property. For example, if we want Bob's object to show he is 40, we'd type in age: 40.
+
+age is the property, and 40 is the value of this property. When we have more than one property, they are separated by commas. The last property does not end with a comma.
+
+Accessing Properties
+
+Now that we know how to make objects with properties, let's look at how we actually use them! 
+
+var bob = {
+  name: "Bob Smith",
+  age: 30
+};
+var susan = {
+  name: "Susan Jordan",
+  age: 25
+};
+// here we save Bob's information
+var name1 = bob.name;
+var age1 = bob.age;
+
+Notice our example objects bob and susan. In this case both bob and susan each have two properties, name and age.
+
+After creating our objects we have added code to access these properties. Notice that we save bob's name, "Bob Smith", into the global variable name1. We do this in line 10.
+
+Accessing Properties, Part 2
+
+In the last exercise, we accessed properties using what is known as dot notation. Good name, right? So to access a property, we use ObjectName.PropertyName (e.g., bob.name)
+
+In addition to dot notation, we can also access properties using bracket notation. In this case we use ObjectName["PropertyName"] to access the desired property. Note, we need " " around the property's name.
+
+var dog = {
+  species: "greyhound",
+  weight: 60,
+  age: 4
+};
+
+var species = dog["species"];
+
+Take a look at our next example object called dog. Notice how we save the dog's species into a variable by accessing the species property of dog using bracket notation.
+
+Another Way to Create
+
+The method we've used to create objects uses object literal notation—that is, creating a new object with { } and defining properties within the brackets.
+
+Another way of creating objects without using the curly brackets { } is to use the keyword new. This is known as creating an object using a constructor.
+
+The new keyword creates an empty object when followed by Object(). The general syntax is:
+var objectName = new Object();
+
+// Our bob object again, but made using a constructor this time 
+var bob = new Object();
+bob.name = "Bob Smith";
+bob.age = 30;
+// Here is susan1, in literal notation
+var susan1 = {
+  name: "Susan Jordan",
+  age: 24
+};
+
+We then have to fill this object with properties and labels. How do we do that? Check out the creation of the object bob to see what we do. We create the name property for the object bob by using bob.name and assigning that to a value. Contrast this to how we define properties in lines 6-7 for the susan1 object.
+
+Methods (a function associated with an object)
+
+We can think of properties as variables associated with an object. Similarly, a method is just like a function associated with an object.
+
+// here is bob again, with his usual properties
+var bob = new Object();
+bob.name = "Bob Smith";
+bob.age = 30;
+// this time we have added a method, setAge
+bob.setAge = function (newAge){
+  bob.age = newAge;
+};
+// here we set bob's age to 40
+bob.setAge(40);
+// bob's feeling old.  Use our method to set bob's age to 20
+bob.setAge(20);
+
+Let's look at bob, our same person object from the last lesson. Instead of just having the properties name and age (line 3 & 4), bob also has a method called setAge (line 6). As you can probably guess, this method sets bob's age to whatever argument you give it. 
+
+Notice how we define setAge kind of like we define a property. The big difference is that we put in a function after the equals sign instead of a string or number.
+
+We call a method like a function, but we use ObjectName.methodName(). Look at line 10 where we use the method to change bob's age to 40. We did this by calling bob.setAge(40);.
+
+Why Are Methods Important?
+
+Methods serve several important purposes when it comes to objects.
+
+01. They can be used to change object property values. The method setAge on line 4 allows us to update bob.age.
+ 
+02. They can be used to make calculations based on object properties. Functions can only use parameters as an input, but methods can make calculations with object properties. For example, we can calculate the year bob was born based on his age with our getYearOfBirth method (line 8).
+
+var bob = new Object();
+bob.age = 17;
+// this time we have added a method, setAge
+bob.setAge = function (newAge){
+  bob.age = newAge;
+};
+
+bob.getYearOfBirth = function () {
+  return 2014 - bob.age;
+};
+console.log(bob.getYearOfBirth());
+
+The "this" Keyword
+
+Our setAge method works great for bob because it updates bob.age, but what if we want to use it for other people?
+
+It turns out we can make a method work for many objects using a new keyword, this. The keyword this acts as a placeholder, and will refer to whichever object called that method when the method is actually used.
+
+Let's look at the method setAge (line 2) to see how this works. By using the keyword this, setAge will change the age property of any object that calls it. Previously, we had a specific object bob instead of the keyword this. But that limited the use of the method to just bob. 
+
+Then when we say bob.setAge = setAge; (line 9), it means whenever we type bob.setAge( ), this.age in the setAge method will refer to bob.age.
+
+// here we define our method using "this", before we even introduce bob
+var setAge = function (newAge) {
+  this.age = newAge;
+};
+// now we make bob
+var bob = new Object();
+bob.age = 30;
+// and down here we just use the method we already made
+bob.setAge = setAge;
+  
+// change bob's age to 50 here
+bob.setAge(50);
+
+"This" Works for Everyone
+
+Great! Now we can take advantage of the fact that the method setAge is not limited to a single object bob—we can reuse the same method for different objects! This allows us to avoid typing out a custom method each time. All because we used the placeholder this.
+
+In the editor, we have the same code as last time, where we define setAge using this. We then set bob.setAge = setAge;. But this time we will reuse the setAge method for susan as well.
+
+// here we define our method using "this", before we even introduce bob
+var setAge = function (newAge) {
+  this.age = newAge;
+};
+// now we make bob
+var bob = new Object();
+bob.age = 30;
+bob.setAge = setAge;
+  
+// make susan here, and first give her an age of 25
+var susan = new Object();
+susan.age = 25;
+susan.setAge = setAge;
+
+// here, update Susan's age to 35 using the method
+susan.setAge(35);
+
+Make Your Own Method
+
+Let's look at a new example and get practice writing methods.
+
+Here we have defined an object rectangle starting on line 1. It has a two properties, height and width, which represents the height and width of the shape.
+
+We have written a setHeight method which will update rectangle's height to the given parameter. This is very similar to setAge from our person example. 
+
+Note we have used the keyword this. this is still a placeholder, but in this scenario, this can only ever refer to rectangle because we defined setHeight to be explicitly part of rectangle by defining it as rectangle.setHeight. 
+
+var rectangle = new Object();
+rectangle.height = 3;
+rectangle.width = 4;
+// here is our method to set the height
+rectangle.setHeight = function (newHeight) {
+  this.height = newHeight;
+};
+// help by finishing this method
+rectangle.setWidth = function (newWidth) {
+    this.width = newWidth;
+};
+
+// here change the width to 8 and height to 6 using our new methods
+rectangle.setHeight(6);
+rectangle.setWidth(8);
+
+More Kinds of Methods
+
+Let's look at another method that calculates useful information about an object.
+
+Here we have an object square with a sideLength property to represent the length of the square's side. This time, we have added a new method, calcPerimeter, which computes the perimeter of the square. Notice we make use of the keyword return (in the same way we use it in functions!).
+
+var square = new Object();
+square.sideLength = 6;
+square.calcPerimeter = function() {
+  return this.sideLength * 4;
+};
+// help us define an area method here
+square.calcArea = function() {
+    return this.sideLength * this.sideLength;
+};
+
+var p = square.calcPerimeter();
+var a = square.calcArea();
+
+The Object Constructor
+
+We mentioned the term constructor back in section one, when we talked about making an object using the keyword new. A constructor is a way to create an object.
+
+When we write bob = new Object( ); we are using a built-in constructor called Object. This constructor is already defined by the JavaScript language and just makes an object with no properties or methods.
+
+This means we have to add our properties one at a time, just like we've been doing. To review, we've created bob using the constructor and defined the name property for you.
+
+Custom Constructors
+
+But this approach of adding in properties one at a time for every object is tedious! Instead of always using the boring Object constructor, we can make our own constructors. 
+
+This way we can set the properties for an object right when it is created. So instead of using the Object constructor which is empty and has no properties, we can make our own constructors which have properties.
+
+To see how this works, look at our Person constructor in lines 1–4. This constructor is used to make Person objects. Notice it uses the keyword this to define the name and age properties and set them equal to the parameters given.
+
+Now we can use this constructor to make our good friends bob and susan in only one line each! Look at lines 7–8: once we have the constructor, it's way easier to make people because we can include their name and age as arguments to their respective constructors.
+
+function Person(name,age) {
+  this.name = name;
+  this.age = age;
+}
+
+// Let's make bob and susan again, using our constructor
+var bob = new Person("Bob Smith", 30);
+var susan = new Person("Susan Jordan", 25);
+// help us make george, whose name is "George Washington" and age is 275
+var george = new Person("George Washington", 275);
+
+Try it Out!
+
+Let's look at another example and practice coding constructors. Here we have made a Cat constructor for you, with age and color properties. 
+
+Why is this Cat constructor so cool? It means if we have many cats and wanted to create an object for each cat, we could just use this constructor with the properties already defined. 
+
+This is much better than using the Object constructor which just gives us an empty object and needs us to define every property and value for each cat object we would create.
+
+function Cat(age, color) {
+  this.age = age;
+  this.color = color;
+}
+
+// make a Dog constructor here
+function Dog(age, breed, smell) {
+    this.age = age;
+    this.breed = breed;
+    this.smell = smell;
+}
+
+More Options
+
+In a constructor, we don't have to define all the properties using parameters. Look at our new Person example on line 1, and see how we set the species to be "Homo Sapiens" (line 4). This means that when we create any Person, their species will be "Homo Sapiens". In this way, the values associated with name and age are not yet assigned, but species will always have the same value. 
+
+In this case, both sally and holden will have the same species of "Homo Sapiens", which makes sense because that is the same across all people. 
+
+function Person(name,age) {
+  this.name = name;
+  this.age = age;
+  this.species = "Homo Sapiens";
+}
+
+var sally = new Person('Sally Bowles',39);
+var holden = new Person('Holden Caulfield',16);
+console.log("sally's species is " + sally.species + " and she is " + sally.age);
+console.log("holden's species is " + holden.species + " and he is " + holden.age);
+
+Constructors With Methods
+
+In addition to setting properties, constructors can also define methods. This way, as soon as the object is created it will have its own methods as well. 
+
+Here we have a Rectangle constructor, which sets the height and width properties equal to the arguments, just like our Person did with name and age. 
+
+Notice we have added a calcArea method. This calculates the area of the rectangle in terms of its height and width. 
+
+Line 11 creates a new object rex which makes use of the constructor. You can see how rex calls the calcArea method in line 12 and saves the result in a variable, area.
+
+function Rectangle(height, width) {
+  this.height = height;
+  this.width = width;
+  this.calcArea = function() {
+      return this.height * this.width;
+  };
+  // put our perimeter function here!
+  this.calcPerimeter = function() {
+      return (this.height * 2) + (this.width * 2);
+  };
+}
+
+var rex = new Rectangle(7,3);
+var area = rex.calcArea();
+var perimeter = rex.calcPerimeter();
+
+Constructors in Review
+
+Constructors are a way to make objects with the keyword new. The most basic constructor is the Object constructor, which will make an object with no methods or properties. 
+
+For more complicated objects we can make our own constructors and put in whatever properties and methods we want. 
+
+Check out our example to the right to see objects in action. Our Rabbit constructor defines an adjective property and a describeMyself method.
+
+Recall how these kind of custom constructors are important because they allow us to easily make many similar objects.
+
+(Notes : The instructions for this lesson : Create a new object rabbit1 with the adjective "fluffy", a new object rabbit2 with the adjective "happy", and a new object rabbit3 with the adjective "sleepy". 
+
+Use the method describeMyself to print out in the console a sentence about each object you just created!)
+
+function Rabbit(adjective) {
+    this.adjective = adjective;
+    this.describeMyself = function() {
+        console.log("I am a " + this.adjective + " rabbit");
+    };
+}
+
+// now we can easily make all of our rabbits
+
+var rabbit1 = new Rabbit("fluffy");
+var rabbit2 = new Rabbit("happy");
+var rabbit3 = new Rabbit("sleepy");
+
+rabbit1.describeMyself;
+rabbit2.describeMyself;
+rabbit3.describeMyself;
+
+Arrays of Objects
+
+Remember that an object is just another type, like a string or number but more complex. This means that just as we can make arrays of numbers and strings, we can also make arrays of objects.
+
+Here we have our Person constructor which should look familiar. We can use this constructor to make an array of Person objects, similar to how we might make an array of numbers but filling in people instead.
+
+// Our person constructor
+function Person (name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+// Now we can make an array of people
+var family = new Array();
+family[0] = new Person("alice", 40);
+family[1] = new Person("bob", 42);
+family[2] = new Person("michelle", 8);
+// add the last family member, "timmy", who is 6 years old
+family[3] = new Person("timmy",6);
+
+
+Another constructor and object project.  This time using a for loop to run through and output the name of items in an array.
+
+// Our Person constructor
+function Person (name,age) {
+    this.name = name;
+    this.age = age;
+};
+
+// Now we can make an array of people
+var family = [];
+
+// loop through our new array
+family[0] = new Person("alice",40);
+family[1] = new Person("bob",42);
+family[2] = new Person("michelle",8);
+family[3] = new Person("timmy",6);
+
+for (i=0;i < family.length;i++)
+{
+    console.log(family[i].name);
+}
+
+Passing Objects into Functions
+
+In addition to making arrays of Objects, we can use objects as parameters for functions as well. That way, these functions can take advantage of the methods and properties that a certain object type provides.
+
+To see an example, take a look at the console. In addition to our Person constructor we have introduced a new function, ageDifference (line 9). This function takes two Person objects as parameters, and returns the difference in age between the two people. 
+
+Notice we would be in trouble here if we tried to call ageDifference and passed in strings instead of people, because strings don't have an age property. But because we know from our constructor that all Person objects will have an age property, we can pass any Person into ageDifference. We must be careful not to pass anything but Person objects into ageDifference.
+
+// Our person constructor
+function Person (name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+// We can make a function which takes persons as arguments
+// This one computes the difference in ages between two people
+var ageDifference = function(person1, person2) {
+    return person1.age - person2.age;
+}
+
+var alice = new Person("Alice", 30);
+var billy = new Person("Billy", 25);
+
+// get the difference in age between alice and billy using our function
+var diff =ageDifference(alice,billy);
+
+Try it Out!  (Building my own object function)
+
+This time try making your own function that takes objects as parameters!
+
+Here we have given you the Person constructor again, along with the ageDifference function as an example.
+
+Now create a new function, olderAge. It should take two Person objects as parameters, and return the age of whatever Person is older. For example, with 30 year-old alice and 25 year-old bob, olderAge(alice, bob); should return 30, because that is alice's age and she is older than bob. If the two people have the same age then you can return that age.
+
+// Our person constructor
+function Person (name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+// We can make a function which takes persons as arguments
+// This one computes the difference in ages between two people
+var ageDifference = function(person1, person2) {
+    return person1.age - person2.age;
+};
+
+// Make a new function, olderAge, to return the age of
+// the older of two people
+var olderAge = function(person1,person2) {
+    if (person1.age>person2.age)
+    {
+        return person1.age;
+    }
+    else if (person2.age>person1.age)
+    {
+        return person2.age;
+    }
+    else
+    {
+        return person1.age;
+    }
+};
+
+// Let's bring back alice and billy to test our new function
+
+var alice = new Person("Alice", 30);
+var billy = new Person("Billy", 25);
+
+console.log("The older person is " + olderAge(alice, billy));
+
+Summary of Objects :
+
+What Are Objects For?
+
+Objects provide us with a way to represent real-world or virtual things. We can do this by storing information inside the object's properties. There are two basic ways to make objects:
+
+Literal Notation, where we use 
+var Name = { };
+
+Constructor Notation, where we use the keyword new.
+
+We've given an example in literal notation to refresh your memory. 
+
+// spencer made with literal notation
+var spencer = {
+  age: 22,
+  country: "United States"
+};
+
+// make spencer2 here with constructor notation
+var spencer2 = new Object();
+spencer2.age = 22;
+spencer2.country = "United States";
+
+Properties
+
+Properties are like variables that belong to an object, and are used to hold pieces of information. Properties can be accessed in two ways:
+
+Dot notation, with ObjectName.PropertyName
+
+Bracket notation, with ObjectName["PropertyName"] (don't forget the quotes!)
+
+In the editor, we have brought back our snoopy object, with a species and age property. 
+
+var snoopy = new Object();
+snoopy.species = "beagle";
+snoopy.age = 10;
+
+// save Snoopy's age and species into variables
+// use dot notation for snoopy's species
+var species = snoopy.species;
+    
+// use bracket notation for snoopy's age
+var age = snoopy["age"];
+
+Customizing Constructors
+
+In addition to the basic Object constructor, we can define our own custom constructors. These are helpful for two reasons:
+01. We can assign our objects properties through parameters we pass in when the object is created.
+02. We can give our objects methods automatically.
+
+These both work to save us time and lines of code when we make objects.
+
+// 3 lines required to make harry_potter
+var harry_potter = new Object();
+harry_potter.pages = 350;
+harry_potter.author = "J.K. Rowling";
+
+// A custom constructor for book
+function Book (pages, author) {
+    this.pages = pages;
+    this.author = author;
+}
+
+// Use our new constructor to make the_hobbit in one line
+var the_hobbit = new Book(320,"J.R.R. Tolkien");
+
+Methods
+
+Methods are like functions that are associated with a particular object.
+
+They are especially helpful when you want to either:
+01. Update the object properties 
+02. Calculate something based on an object's properties.
+
+Here, we have included a Circle object, with a radius property representing the circle's radius. We have implemented an area function which calculates the circle's area. Notice we have used Math.PI to get the π value.
+
+function Circle (radius) {
+    this.radius = radius;
+    this.area = function () {
+        return Math.PI * this.radius * this.radius;
+        
+    };
+    // define a perimeter method here
+    this.perimeter = function() {
+        return 2 * Math.PI * this.radius;
+    }
+};
+
+CASHREGISTER PROJECT
+
+Shut the Shop!
+
+You are working for a large supermarket and the cash register has just failed. The boss is not happy as he can't make any money.
+
+To save the day it happens that you let slip to your boss that you know JavaScript and can build a quick virtual cash register until head office sends support staff.
+
+Your boss is over the moon and wants you to get started right away.
+
+
+Instructions
+
+Create a new object called cashRegister with the property total initialized to 0.
+
+Then change the property total to 2.99 using dot notation.
+
+//Create the object called cashRegister 
+//and initialize its total property
+var cashRegister = {
+    total : 0
+}
+
+//Using dot notation change the total property
+cashRegister.total = 2.99;
+
+
+Manually Add It Up?
+
+Great! The bossman can see that you can tell the cash register the total. But we need the cash register to do more.
+
+Your boss wants a way to manually add the cost of each item. We have written the add method for you. There are two things we should note.
+01. We are using literal notation to include the method add. 
+02. We've used the += operator. This is a shorthand way of saying 
+
+this.total = this.total + itemCost;
+
+In general, a += b; means "add b to a and put the result of that addition back into a. This is also available for the other basic arithmetic functions: -=, *=, and /= do what you expect.
+
+Instructions
+
+Use the add method to sum up the cost of the following four items. 
+01. Eggs 0.98
+02. Milk 1.23
+03. Magazine 4.99
+04. Chocolate 0.45
+
+If we only call the method once, it will just add the first item. So to add up the cost of four items, how many times will we have to call the method?
+
+var cashRegister = {
+    total:0,
+    add: function(itemCost){
+        this.total += itemCost;
+    }
+};
+
+//call the add method for our items
+cashRegister.add(0.98);
+cashRegister.add(1.23);
+cashRegister.add(4.99);
+cashRegister.add(0.45);
+
+//Show the total bill
+console.log('Your bill is '+cashRegister.total);
+
+
+Short-Term Memory
+
+But this method only works as long as you can remember the cost of every item in the store. We need something like a bar code scanner where just knowing the item name will automatically add the cost of that item to the total.
+
+So we create a method called scan. This method takes some item parameter, and adds the cost of this item to the total. item is a string.
+
+We also use a switch statement. Previously, we would have probably used multiple if-else statements. Here, things work in a similar way. 
+
+For example, if the item is "eggs" (line 8), we then call the add method, passing through 0.98 as the itemCost. This will add 0.98 to cashRegister.total. If instead the item is "milk" or "chocolate" or "magazine", the relevant itemCost is added. Note no default case is needed for this switch statement.
+
+Instructions
+ 
+01. Write the add method which has a single parameter, itemCost. It will add the itemCost to the total.
+02. We have partially written the scan method for you and started a switch statement. Add the following 2 items to the switch statement:
+— "magazine", 4.99
+— "chocolate", 0.45
+
+Finally, use the scan method to buy "eggs" twice and a "magazine" three times.
+
+var cashRegister = {
+    total: 0,
+//insert the add method here    
+    add: function(itemCost) {
+        this.total += itemCost;
+    },
+    
+    scan: function (item) {
+        switch (item) { 
+        case "eggs": 
+            this.add(0.98); 
+            break;
+        
+        case "milk": 
+            this.add(1.23); 
+            break;
+        
+        //Add other 2 items here
+        case "magazine":
+            this.add(4.99);
+            break;
+            
+        case "chocolate":
+            this.add(0.45);
+            break;
+        
+        }
+        return true;
+    }
+};
+
+//Scan 2 eggs and 3 magazines
+
+cashRegister.scan("eggs");
+cashRegister.scan("eggs");
+cashRegister.scan("magazine");
+cashRegister.scan("magazine");
+cashRegister.scan("magazine");
+
+//Show the total bill
+console.log('Your bill is '+cashRegister.total);
+
+
+I Have to Scan It More Than Once?
+
+Is that a smile on the boss's face? Well, there was one until he realized that your system requires every item to be scanned individually. He finds this pretty inefficient and you probably agree. Let's get real—it was pretty annoying having to call the scan method five times in the previous exercise!
+
+What can we do? What is the limitation of the scan method? Well, it has just one parameter, item, and you can't specify anything related to quantity.
+
+
+Instructions
+ 
+Modify the scan method such that if we tell it the quantity of each item, it will be able to add the right amount to the total. Since you currently tell scan nothing about quantity, it may be useful to create another parameter. 
+
+Scan 4 of each item using your improved scan method. Previously we would have needed to call scan 16 times! Now it is down to 4.
+
+var cashRegister = {
+    total:0,
+    add: function(itemCost){
+        this.total += itemCost;
+    },
+    scan: function(item,quantity) {
+        switch (item) {
+        case "eggs": this.add(0.98*quantity); break;
+        case "milk": this.add(1.23*quantity); break;
+        case "magazine": this.add(4.99*quantity); break;
+        case "chocolate": this.add(0.45*quantity); break;
+        }
+    }
+};
+
+// scan each item 4 times
+cashRegister.scan("eggs",4);
+cashRegister.scan("milk",4);
+cashRegister.scan("magazine",4);
+cashRegister.scan("chocolate",4);
+
+
+//Show the total bill
+console.log('Your bill is '+cashRegister.total);
+
+
+Bleep Bleep
+
+The boss looks down at his pager to see Register 8 needs assistance. They have scanned an item too many times and need to void the last transaction.
+
+So he turns to you and says: "Okay JavaScript Ninja! What do we do now?!"
+
+
+Instructions
+
+We need to keep track of how much the last transaction was. Modify the add method to keep track of the amount of the last transaction. This should be tracked in a new property, lastTransactionAmount.
+
+Add a method called voidLastTransaction that subtracts the last amount transacted from total.
+
+Then use the new method to void the last item we scanned. Finally, scan only 3 of the same item instead.
+
+var cashRegister = {
+    total:0,
+    transaction:0,
+    //Dont forget to add your property
+    add: function(itemCost) {
+        this.total +=  itemCost;
+        this.transaction = itemCost;
+    },
+    scan: function(item,quantity) {
+        switch (item) {
+        case "eggs": this.add(0.98 * quantity); break;
+        case "milk": this.add(1.23 * quantity); break;
+        case "magazine": this.add(4.99 * quantity); break;
+        case "chocolate": this.add(0.45 * quantity); break;
+        }
+        return true;
+    },
+    //Add the voidLastTransaction Method here
+    voidLastTransaction : function() {
+        this.total -= this.transaction;
+    }
+    
+};
+
+cashRegister.scan('eggs',1);
+cashRegister.scan('milk',1);
+cashRegister.scan('magazine',1);
+cashRegister.scan('chocolate',4);
+
+//Void the last transaction and then add 3 instead
+cashRegister.voidLastTransaction();
+
+cashRegister.scan('chocolate',3);
+
+//Show the total bill
+console.log('Your bill is '+cashRegister.total);
+
+
+Over the Moon
+
+Great! The store is ticking along making money again. The boss is so happy you have just been given a bonus staff discount to the value of 20%.
+
+However the current system doesn't know how to apply the different levels of staff discount that apply. Now the rest of the staff is not happy and demanding you make improvements!
+
+Let's sort it out so that staff can get their well deserved discount.
+
+
+Instructions
+
+Create an object constructor called StaffMember which takes two parameters—name and discountPercent. And then have the (public) properties name and discountPercent equal the parameters. 
+
+To help, we have already created two employees using this constructor. Sally and Bob already have their staff discount set up: Sally getting 5% off and Bob getting 10%.
+
+Create a new instance of the object for yourself called me with your massive staff discount bonus of 20%.
+
+// create a constructor for the StaffMember class
+function StaffMember(name,discountPercent) {
+    this.name = name;
+    this.discountPercent = discountPercent;
+}
+
+var sally = new StaffMember("Sally",5);
+var bob = new StaffMember("Bob",10);
+
+//Create a StaffMember for yourself called me
+var me = new StaffMember("Me",20);
+
+
+You Deserved It!
+
+Whew! It's been a long day fixing cash registers and now let's actually apply our well-earned discount. Now that we have our objects representing the staff, let's update our cash register to actually apply the discount.
+
+
+Instructions
+
+On line 10 create a new object called me of type StaffMember for yourself with a staff discount of 20%
+
+Create a new method called applyStaffDiscount in the cashRegister object which accepts a parameter employee. When this method is called, cashRegister should apply the staff member's discountPercent to total. 
+
+Under the comment, 'Apply your staff discount by passing the me object, call your new applyStaffDiscount and pass the object me. 
+
+Hint (Syntax for calculation)
+
+To calculate the percent discount use:
+this.total -= this.total * (employee.discountPercent / 100);
+
+
+We need to divide by 100 because we need to convert our percentage into a decimal fraction.
+
+function StaffMember(name,discountPercent) {
+    this.name = name;
+    this.discountPercent = discountPercent;
+}
+
+var sally = new StaffMember("Sally",5);
+var bob = new StaffMember("Bob",10);
+
+// Create yourself again as 'me' with a staff discount of 20%
+var me = new StaffMember("Me",20);
+
+var cashRegister = {
+    total:0,
+    lastTransactionAmount: 0,
+    add: function(itemCost){
+        this.total += (itemCost || 0);
+        this.lastTransactionAmount = itemCost;
+    },
+    scan: function(item,quantity){
+        switch (item){
+        case "eggs": this.add(0.98 * quantity); break;
+        case "milk": this.add(1.23 * quantity); break;
+        case "magazine": this.add(4.99 * quantity); break;
+        case "chocolate": this.add(0.45 * quantity); break;
+        }
+        return true;
+    },
+    voidLastTransaction : function(){
+        this.total -= this.lastTransactionAmount;
+        this.lastTransactionAmount = 0;
+    },
+    // Create a new method applyStaffDiscount here
+    applyStaffDiscount : function(employee) {
+        this.total -= this.total *  (employee.discountPercent / 100);
+    }
+    
+};
+
+cashRegister.scan('eggs',1);
+cashRegister.scan('milk',1);
+cashRegister.scan('magazine',3);
+// Apply your staff discount by passing the 'me' object 
+// to applyStaffDiscount
+cashRegister.applyStaffDiscount(me);
+// when referencing me you don't use
+// any quotation marks!
+
+// Show the total bill
+console.log('Your bill is '+cashRegister.total.toFixed(2));
+
+
+I.D., Please
+
+Alright! Let's get our hands dirty and start exploring some really cool stuff about objects in JavaScript. But before we can do that, how can we even tell if something is an object (as opposed to, say, a number or string)? It would be great if we could tell what type something is in JavaScript. Good thing there's a handy built-in operator to do this!
+
+Say we have a variable thing and we don't know what type thing is. We can call typeof thing to figure this out. Generally, the most useful types are "number," "string," "function," and of course, "object."
+
+As an example, the following example will print "object":
+var someObject = {someProperty: someValue};
+console.log( typeof someObject );
+
+// complete these definitions so that they will have
+// the appropriate types
+var anObj = { job: "I'm an object!" };
+var aNumber = 42;
+var aString = "I'm a string!";
+
+console.log(typeof anObj); // should print "object"
+console.log(typeof aNumber); // should print "number"
+console.log(typeof aString); // should print "string"
+
+Know Thyself
+
+In the last exercise, we used typeof to figure out what type a variable in JavaScript is. Since we know how to tell objects apart from everything else now, let's focus on them.
+
+You wouldn't know it, but every object in JavaScript comes with some baggage (stay tuned for more on this!). Part of this baggage includes a method called hasOwnProperty. This lets us know if an object has a particular property. 
+
+We show how to use hasOwnProperty in the last two lines. It returns true or false, based on whether an object has a certain property.
+
+var myObj = {
+    // finish myObj
+    name : "bob"
+};
+
+console.log( myObj.hasOwnProperty('name') ); // should print true
+console.log( myObj.hasOwnProperty('nickname') ); // should print false
+
+Dressed to Impress
+
+Let's get some practice working with hasOwnProperty. It is an invaluable tool when working with objects!
+
+Try to run the code in the editor as it is. You should get an error because shorts is not a property of the suitcase object.
+
+Let's write some code to test for this so we can avoid this nasty error later.
+
+(Note : Instructions for lesson)
+
+Remove the console.log statement.
+
+Write an if statement that checks to see if suitcase has the shorts property.
+
+If your if statement evaluates to true, print the value of the shorts property.
+
+If your if statement evaluates to false, set the shorts property to any value you wish using dot notation. Then print the value of the shorts property.
+
+var suitcase = {
+    shirt: "Hawaiian"
+};
+
+if (suitcase.hasOwnProperty("shorts"))
+{
+    console.log(suitcase.shorts);
+}
+else
+{
+    suitcase.shorts = "red";
+    console.log(suitcase.shorts);
+}
+
+Getting IN-timate
+
+Now let's learn how to work with all the properties that belong to an object. First, let's define an object:
+var dog = {
+species: "bulldog",
+age: 3,
+color: brown
+};
+
+To print out all elements, we can use a for/in loop, like this:
+for(var property in dog) {
+  console.log(property);
+}
+
+In the loop we use console.log to print out each key. Remember the "property" bit can be any placeholder name you like.
+
+var nyc = {
+    fullName: "New York City",
+    mayor: "Bill de Blasio",
+    population: 8000000,
+    boroughs: 5
+};
+
+for (var content in nyc) {
+    console.log(content);
+}
+
+
+List ALL the Properties!
+
+We've just seen how to print all of an object's property names with a for-in loop. But how do we print out all the values associated with every property? Surprise! The for-in loop will be our friend again! Let's get there slowly. Our dog object can help us.
+var dog = {
+species: "bulldog",
+age: 3,
+color: brown
+};
+
+First, remember that
+dog.species = dog["species"] = "bulldog";
+
+And if we say:
+
+var x = "species";
+
+then 
+
+dog[x] = "bulldog";
+
+We see that by assigning the property name to a variable, we can then use the variable name in bracket notation to get the property's value. So to get all the values from the dog object, we would use the for-in loop and the bracket notation we just saw above. See the hint to see the code to print the property values for dog.
+
+(Note : Instructions for lesson)
+ 
+Write another for-in loop, but this time print the value of each property in nyc.
+
+var nyc = {
+    fullName: "New York City",
+    mayor: "Bill de Blasio",
+    population: 8000000,
+    boroughs: 5
+};
+
+// write a for-in loop to print the value of nyc's properties
+
+for (var x in nyc) {
+    console.log(nyc[x]);
+}
+
+Class is in Session
+
+Alright, it's time to learn the basics of object-oriented programming! Often abbreviated OOP, this is a very important programming paradigm that is widely used in the industry today.
+
+Let's start by introducing classes. We learned in the last course that constructors are a way to make objects, but they actually do even more than that.
+
+When you make a constructor, you are in fact defining a new class. A class can be thought of as a type, or a category of objects—kind of like how Number and String are types in JavaScript.
+
+Take a look at our Person example taken from Introduction to Objects I. In this case bob and susan are two separate objects, but both belong to the class Person.
+
+Instructions
+ 
+Make your own class, Circle, by building a constructor for it. The constructor for Circle should have one property, radius, and take one argument for the initial radius.
+
+function Person(name,age) {
+  this.name = name;
+  this.age = age;
+}
+
+// Let's make bob again, using our constructor
+var bob = new Person("Bob Smith", 30);
+var susan = new Person("Susan Jordan", 35);
+
+// make your own class here
+
+function Circle(radius) {
+    this.radius = radius;
+}
+
+Teach Snoopy
+
+So we know that a class will have certain properties and methods, but what keeps track of what a given class can or can't do? What a class has or doesn't have? That is the job of the prototype. 
+
+JavaScript automatically defines the prototype for class with a constructor. For example, our Dog constructor ensures that the Dog prototype has a breed property. Remember, the Dog prototype keeps track of what Dog has, doesn't have, can, or can't do.
+
+We know we can add methods to objects, and in line 7 we add the bark method to buddy. Hit run and you will see one "Woof" printed when buddy barks. Notice what happens when we try to get snoopy to bark in line 17 though. Even though snoopy is of the class Dog, he doesn't know how to bark because only buddy had bark added as a method.
+
+Instructions
+
+To fix this, start at line 15 add a bark method for the snoopy object. You can make it just like the bark method for buddy, or type in whatever barking noise you want instead of "Woof".
+
+function Dog (breed) {
+  this.breed = breed;
+}
+
+// here we make buddy and teach him how to bark
+var buddy = new Dog("Golden Retriever");
+buddy.bark = function() {
+  console.log("Woof");
+};
+buddy.bark();
+
+// here we make snoopy
+var snoopy = new Dog("Beagle");
+// we need you to teach snoopy how to bark here
+snoopy.bark = function() {
+    console.log("Bark!");
+};
+// this causes an error, because snoopy doesn't know how to bark!
+snoopy.bark();
+
+How do Classes Help Us?
+
+Classes are very important in object-oriented programming. This is because a class tells us helpful information about objects, and you can think of an object as a particular instance of a class. 
+
+For example, look at our Person class again in the console. We know that any Person will have a name and age, because they are in the constructor. This allows us to create a function like printPersonName, which will take a Person as an argument and print out their name. We know the function will work on any Person, because name is a valid property for that class. 
+
+Instructions
+
+Make a Person called me with your own name and age, and print your name using printPersonName.
+
+function Person(name,age) {
+  this.name = name;
+  this.age = age;
+}
+// a function that prints the name of any given person
+var printPersonName = function (p) {
+  console.log(p.name);
+};
+
+var bob = new Person("Bob Smith", 30);
+printPersonName(bob);
+
+// make a person called me with your name and age
+// then use printPersonName to print your name
+var me = new Person("Bob Sheridan", 40);
+printPersonName(me);
+
+Prototype to the Rescue
+
+Here we have very similar code as last time, but there is an important difference. Instead of using buddy.bark to add the bark method to just the buddy object, we use Dog.prototype.bark. 
+
+Click run this time, and both buddy and snoopy can bark just fine! Snoopy can bark too even though we haven't added a bark method to that object. How is this so? Because we have now changed the prototype for the class Dog. This immediately teaches all Dogs the new method.
+
+In general, if you want to add a method to a class such that all members of the class can use it, we use the following syntax to extend the prototype:
+
+className.prototype.newMethod =
+
+function() {
+statements;
+};
+
+Here's the associated code for the above section :
+
+function Dog (breed) {
+  this.breed = breed;
+};
+
+// here we make buddy and teach him how to bark
+var buddy = new Dog("golden Retriever");
+Dog.prototype.bark = function() {
+  console.log("Woof");
+};
+buddy.bark();
+
+// here we make snoopy
+var snoopy = new Dog("Beagle");
+/// this time it works!
+snoopy.bark();
+
+Prototype Practice
+
+Here we have created a new class, Cat, and its constructor. We also have two cats that would like to meow, but currently Cats have no meow method.
+
+Instructions
+
+Add a meow method to the Cat prototype so that all cats can now meow. This method should print to the console "Meow!". Then call this method for each cat. 
+
+function Cat(name, breed) {
+    this.name = name;
+    this.breed = breed;
+}
+
+// let's make some cats!
+var cheshire = new Cat("Cheshire Cat", "British Shorthair");
+var gary = new Cat("Gary", "Domestic Shorthair");
+
+// add a method "meow" to the Cat class that will allow
+// all cats to print "Meow!" to the console
+Cat.prototype.meow = function () {
+    console.log("Meow!");
+}
+
+// add code here to make the cats meow!
+
+cheshire.meow();
+gary.meow();
+
+
+
+It's All in the Genes
+
+
+In object-oriented programming, inheritance allows one class to see and use the methods and properties of another class. You can think of it as a child being able to use his or her parent's money because the child inherits the money.
+
+We will learn more about inheritance as we continue this lesson, but for now let's just refresh our memories about how classes and objects work. 
+
+
+
+Instructions
+ 
+
+Create a class named Animal with two properties, name and numLegs. The Animal constructor should have two arguments whose values are assigned to name and numLegs. 
+
+Next, change the prototype of Animal and add a method sayName that prints to the console "Hi my name is [name]", where [name] is the value of name.
+
+Click "Stuck? Get a hint!" for examples of how to create a class and how to add a method to an object's prototype.
+
+Finally, we have provided the last two lines to test your constructor and sayName method. Don't change these!
+
+Hint (Just a quick reminder of syntaxes)
+
+Return to the previous lesson for help on creating your own classes. Remember how we created a Person class?
+function Person(name,age) {
+  this.name = name;
+  this.age = age;
+};
+
+Also recall how we added a method to a class's prototype:
+Dog.prototype.bark = function() {
+  console.log("Woof");
+};
+
+To reference an Animal's name property when changing its prototype, be sure to use this.name.
+
+// create your Animal class here
+function Animal(name,numLegs) {
+    this.name = name;
+    this.numLegs = numLegs;
+}
+
+// create the sayName method for Animal
+Animal.prototype.sayName = function () {
+    console.log("Hi my name is " + this.name);
+};
+
+// provided code to test above constructor and method
+var penguin = new Animal("Captain Cook", 2);
+penguin.sayName();
+
+
+Marching Penguins
+
+Let's say we're dealing with a lot of Penguins. It sure would be nice to create a Penguin class so that perhaps later we can give it some methods unique to a penguin and not confuse it with the Animal class.
+
+Instructions
+
+Create a brand new Penguin class constructor starting in line 11. A penguin is an animal so it should also have the name and numLegs properties as well as a sayName method that prints the same thing as Animal's sayName method.
+
+We're not done with animals yet, so we have still included the Animal constructor and its sayName method. The last two lines test your Penguin code.
+
+function Animal(name, numLegs) {
+    this.name = name;
+    this.numLegs = numLegs;
+}
+Animal.prototype.sayName = function() {
+    console.log("Hi my name is " + this.name);
+};
+
+
+// create a Penguin constructor here
+function Penguin(name,numLegs) {
+    this.name = name;
+    this.numLegs = numLegs;
+}    
+
+// create a sayName method for Penguins here
+Penguin.prototype.sayName = function() {
+        console.log("Hi my name is " + this.name);
+};
+
+// our test code
+var theCaptain = new Penguin("Captain Cook", 2);
+theCaptain.sayName();
+
+
+DRY Penguins
+
+Creating a brand new Penguin was nice, but we did end up reusing a lot of the same code as the Animal class. This goes against the "DRY" principle of programming: Don't Repeat Yourself.
+
+Inheritance can help us here! A Penguin is an Animal, so they should have all the same properties and methods as Animal. Whenever this X is-a Y relationship exists, there's a good chance that we should be using inheritance.
+
+Remember, inheritance lets us see and use properties and methods from another class. To say that Penguin inherits from Animal, we need to set Penguin's prototype to be Animal.
+
+Instructions
+
+Create a new Penguin class. The Penguin constructor can be more unique than the generic Animal one because all penguins have 2 legs. Your constructor should only take a name parameter, and within the constructor itself, set this.numLegs to 2. 
+
+Set the Penguin class's prototype to a new instance of Animal by adding this line after you make the constructor:
+
+Penguin.prototype = new Animal();
+
+This means that Penguin inherits properties and methods from Animal.
+
+// the original Animal class and sayName method
+function Animal(name, numLegs) {
+    this.name = name;
+    this.numLegs = numLegs;
+}
+Animal.prototype.sayName = function() {
+    console.log("Hi my name is " + this.name);
+};
+
+// define a Penguin class
+function Penguin(name) {
+    this.name = name;
+    this.numLegs = 2;
+}
+
+// set its prototype to be a new instance of Animal
+Penguin.prototype = new Animal();
+
+Black (and White) Penguin Magic
+
+Now for some black magic and to see the power of inheritance!
+
+We never defined a sayName method for Penguin, but what happens when we try to call it? 
+
+Instructions
+ 
+Create a Penguin object with the variable name penguin and any name you'd like. 
+
+Then call penguin.sayName();.
+
+Then be amazed.
+
+// the original Animal class and sayName method
+function Animal(name, numLegs) {
+    this.name = name;
+    this.numLegs = numLegs;
+}
+Animal.prototype.sayName = function() {
+    console.log("Hi my name is " + this.name);
+};
+
+// define a Penguin class
+function Penguin(name) {
+    this.name = name;
+    this.numLegs = 2;
+}
+
+// set its prototype to be a new instance of Animal
+Penguin.prototype = new Animal();
+var penguin = new Penguin("Ploppy");  // It's important that this instance exists after the Penguin is set as a Prototype of 					Animal otherwise it won't work!
+
+penguin.sayName();
+
+
+Penguins, Properties, and the Prototype
+
+We saw in the last exercise how Penguin inherited the sayName method from Animal. We now explore how classes can inherit properties as well. 
+
+For simplicity, we've defined a new Penguin class that doesn't inherit anything from Animal. 
+
+Instructions
+
+Create an Emperor class that takes a single name parameter and sets its name property to be this value. Don't set a numLegs property in the constructor.
+
+Similar to what we did in the previous exercise, make Emperor inherit from Penguin by setting the prototype of Emperor to be Penguin. 
+
+Create a new emperor object that is an instance of the Emperor class with any name you'd like. Then use console.log to print the number of legs emperor has—this should have been inherited from Penguin!
+
+function Penguin(name) {
+    this.name = name;
+    this.numLegs = 2;
+}
+
+// create your Emperor class here and make it inherit from Penguin
+function Emperor(name) {
+    this.name = name;
+}
+
+Emperor.prototype = new Penguin();
+
+// create an "emperor" object and print the number of legs it has
+var emperor = new Emperor("George");
+
+console.log(emperor.numLegs);
+
+
+Up the Food-I-mean-Prototype Chain
+
+A penguin is an animal and an emperor penguin is a penguin. Are emperor penguins animals too? Of course!
+
+The "prototype chain" in JavaScript knows this as well. If JavaScript encounters something it can't find in the current class's methods or properties, it looks up the prototype chain to see if it's defined in a class that it inherits from. This keeps going upwards until it stops all the way at the top: the mighty Object.prototype (more on this later). By default, all classes inherit directly from Object, unless we change the class's prototype, like we've been doing for Penguin and Emperor. 
+
+
+Instructions
+ 
+Let's see how going up the prototype chain works! We've defined some classes and inheritance patterns: Emperor inherits from Penguin which inherits from Animal. We've also created an instance of the Emperor class.
+
+Without modifying anything other than lines 22-24, complete the console.log statements to print the appropriate responses.
+
+Remember how the prototype chain works: if a property is not defined for a class, this class's prototype chain will be traversed upwards until one is found (or not) in a parent (higher) class.
+
+// original classes
+function Animal(name, numLegs) {
+    this.name = name;
+    this.numLegs = numLegs;
+    this.isAlive = true;
+}
+function Penguin(name) {
+    this.name = name;
+    this.numLegs = 2;
+}
+function Emperor(name) {
+    this.name = name;
+    this.saying = "Waddle waddle";
+}
+
+// set up the prototype chain
+Penguin.prototype = new Animal();
+Emperor.prototype = new Penguin();
+
+var myEmperor = new Emperor("Jules");
+
+console.log(myEmperor.saying); // should print "Waddle waddle"
+console.log(myEmperor.numLegs); // should print 2
+console.log(myEmperor.isAlive); // should print true
+
+
+Open to the Public
+
+In JavaScript all properties of an object are automatically public. Public means that they can be accessed outside the class. Think of these properties as the information a class is willing to share.
+
+Look at the Person class. It has 3 public properties: firstName, lastName, and age. On lines 8 and 9, we access the firstName and lastName properties of john and assign them to myFirst and myLast.
+
+Notice that we are free to access the firstName and lastName properties, which is what we mean when we say they are public.
+
+
+Instructions
+
+Declare a third variable called myAge and use it to store the age property of the john object.
+
+function Person(first,last,age) {
+   this.firstName = first;
+   this.lastName = last;
+   this.age = age;
+}
+
+var john = new Person('John','Smith',30);
+var myFirst = john.firstName;
+var myLast = john.lastName;
+
+//declare variable myAge set to the age of the john object.
+var myAge = john.age;
+
+
+Private Variables
+
+Good! But what if an object wants to keep some information hidden?
+
+Just as functions can have local variables which can only be accessed from within that function, objects can have private variables. Private variables are pieces of information you do not want to publicly share, and they can only be directly accessed from within the class.
+
+The Person class has been modified to have a private variable called bankBalance. Notice that it looks just like a normal variable, but it is defined inside the constructor for Person without using this, but instead using var. This makes bankBalance a private variable.
+
+
+Instructions
+
+Create an object john using the Person constructor. He can have any name and age you wish.
+
+Next, try to print his bankBalance. What happens?
+
+function Person(first,last,age) {
+   this.firstname = first;
+   this.lastname = last;
+   this.age = age;
+   var bankBalance = 7500;
+}
+
+// create your Person 
+var john = new Person("John","Johnny",12);
+
+// try to print his bankBalance
+console.log(john.bankBalance);
+
+(Note : this returns "undefined")
+
+
+Accessing Private Variables
+
+Although we cannot directly access private variables from outside the class, there is a way to get around this. We can define a public method that returns the value of a private variable.
+
+
+Instructions
+
+Here we have included similar code from last time, but here we have added a method getBalance. Modify getBalance so that it returns bankBalance. 
+
+Then on line 17, create a new variable named myBalance and set its value to John's bank balance. You can do this by calling your newly-defined getBalance method for john. Then print myBalance.
+
+Line 14 should still print undefined!
+
+function Person(first,last,age) {
+   this.firstname = first;
+   this.lastname = last;
+   this.age = age;
+   var bankBalance = 7500;
+  
+   this.getBalance = function() {
+      // your code should return the bankBalance
+      return(bankBalance);
+   };
+}
+
+var john = new Person('John','Smith',30);
+console.log(john.bankBalance);
+
+// create a new variable myBalance that calls getBalance()
+var myBalance = john.getBalance();
+console.log(myBalance);
+
+
+Private Methods
+
+Why did that code work? An object's private variables can only be accessed by other methods that are part of that same object. So, we just used an object's public method to access a private variable!
+
+Methods can also be private within a class and inaccessible outside of the class. Changing this.returnBalance from the last exercise to var returnBalance makes this method private. If you run the program trying to access the method you get an undefined error this time. 
+
+The way to access a private method is similar to accessing a private variable. You must create a public method for the class that returns the private method.
+
+
+Instructions
+ 
+Create a method called askTeller within the Person class that returns the returnBalance method. This means that it returns the method itself and NOT the result of calling that method. So you should NOT have parentheses after returnBalance. 
+
+Because askTeller returns a method, we need to call it to make it any use. This is what var myBalance = myBalanceMethod(); does. 
+
+function Person(first,last,age) {
+   this.firstname = first;
+   this.lastname = last;
+   this.age = age;
+   var bankBalance = 7500;
+  
+   var returnBalance = function() {
+      return bankBalance;
+   };
+       
+   // create the new function here
+   this.askTeller = function() {
+       return returnBalance;
+   }
+}
+
+var john = new Person('John','Smith',30);
+console.log(john.returnBalance);
+var myBalanceMethod = john.askTeller();
+var myBalance = myBalanceMethod();
+console.log(myBalance);
+
+
+Passing Arguments 
+
+The askTeller function has been modified within the Person class to directly give you your balance. However, it now needs the account password in order to return the bankBalance.
+
+
+Instructions
+ 
+Create a new variable called myBalance that calls the askTeller function with a password argument, 1234. 
+
+function Person(first,last,age) {
+   this.firstname = first;
+   this.lastname = last;
+   this.age = age;
+   var bankBalance = 7500;
+  
+   this.askTeller = function(pass) {
+     if (pass == 1234) return bankBalance;
+     else return "Wrong password.";
+   };
+}
+
+var john = new Person('John','Smith',30);
+/* the variable myBalance should access askTeller()
+   with a password as an argument  */
+var myBalance = john.askTeller(1234);
+console.log(myBalance);
+
+
+Looks For-In To Me
+
+Objects aren't so foreign if you really think about it!
+
+Remember you can figure out the type of a variable by using typeof myVariable;. Types we are concerned with for now are "object", "string", and "number".
+
+Recall the for-in loop:
+for(var x in obj) {
+executeSomething();
+}
+
+This will go through all the properties of obj one by one and assign the property name to x on each run of the loop. 
+
+Let's combine our knowledge of these two concepts.
+
+Instructions
+
+Examine the languages object. Three properties are strings, whereas one is a number.
+
+Use a for-in loop to print out the three ways to say hello. In the loop, you should check to see if the property value is a string so you don't accidentally print a number.
+
+var languages = {
+    english: "Hello!",
+    french: "Bonjour!",
+    notALanguage: 4,
+    spanish: "Hola!"
+};
+
+// print hello in the 3 different languages
+for (var x in languages) {
+    if (typeof languages[x] === "string")
+    {
+        console.log(languages[x]);
+    }
+};
+    
+
+Hello? Yes, This is Dog
+
+We should all know by now what's so cool about using prototype: we can define a method for a class, and any instance of the class (i.e., object created using that class's constructor) can use that method.
+
+Remember that classes and the prototype are important to OOP!
+
+
+Instructions
+
+Add the sayHello method to the Dog class by extending its prototype. 
+
+sayHello should print to the console: "Hello this is a [breed] dog", where [breed] is the dog's breed.
+
+function Dog (breed) {
+    this.breed = breed;
+};
+
+// add the sayHello method to the Dog class 
+// so all dogs now can say hello
+Dog.prototype.sayHello = function() {
+    console.log("Hello this is a " + this.breed + " dog");
+}
+
+var yourDog = new Dog("golden retriever");
+yourDog.sayHello();
+
+var myDog = new Dog("dachshund");
+myDog.sayHello();
+
+
+So Meta I Can't Take It!
+
+Do you remember how we said every JavaScript object has some baggage associated with it? Part of this baggage was the hasOwnProperty method available to all objects. Now let's see where this came from...
+
+If we have just a plain object (i.e., not created from a class constructor), recall that it automatically inherits from Object.prototype. Could this be where we get hasOwnProperty from? How can we check?
+
+
+Instructions
+
+Let's first see what type Object.prototype is. Do this in line 2 and save it into prototypeType. 
+
+If all goes well, you should realize that Object.prototype itself is an object! And since all objects have the hasOwnProperty method, it's pretty easy to check if hasOwnProperty comes from Object.prototype. Do this in line 6 and the result may be surprising.
+
+Hint (Because it's not really explained how to use "hasOwnProperty")
+
+To see what type Object.prototype is, we should use typeof Object.prototype.
+
+The property we want to check for is actually "hasOwnProperty", so line 6 should look like: 
+Object.prototype.hasOwnProperty("hasOwnProperty");
+
+// what is this "Object.prototype" anyway...?
+var prototypeType = typeof Object.prototype;
+console.log(prototypeType);
+
+// now let's examine it!
+var hasOwn = Object.prototype.hasOwnProperty("hasOwnProperty");
+console.log(hasOwn);
+
+
+Private Eye
+
+Recall that:
+— Public properties can be accessed from outside the class
+— Private properties can only be accessed from within the class
+
+Using constructor notation, a property declared as this.property = "someValue;" will be public, whereas a property declared with var property = "hiddenValue;" will be private.
+
+In this exercise, hit run and you'll see that all your grades are exposed! You really just want people to know your overall GPA. 
+
+
+Instructions
+ 
+Modify the StudentReport class so that no grades will be printed to the console in the for-in loop. 
+
+However, getGPA should still function properly in the last line.
+
+function StudentReport() {
+    var grade1 = 4;  // This previously said "this.grade1 = 4;" which made the variable public to the object
+    var grade2 = 2;  // replacing the "this." with "var " made it private
+    var grade3 = 1;  // it's important to note that the getGPA function also had to be amended from this.grade to just grade
+    this.getGPA = function() {
+        return (grade1 + grade2 + grade3) / 3;
+    };
+}
+
+var myStudentReport = new StudentReport();
+
+for(var x in myStudentReport) {
+    if(typeof myStudentReport[x] !== "function") {
+        console.log("Muahaha! " + myStudentReport[x]);
+    }
+}
+
+console.log("Your overall GPA is " + myStudentReport.getGPA());
+
+
+Q: What best describes the method to access a private variable from outside the class?
+A: Define a public method that returns the value of a private variable.
+
+

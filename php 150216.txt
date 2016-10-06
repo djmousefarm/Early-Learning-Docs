@@ -1,0 +1,1559 @@
+
+PHP in Action
+
+
+PHP is a programming language that can do all sorts of things: evaluate form data sent from a browser, build custom web content to serve the browser, talk to a database, and even send and receive cookies (little packets of data that your browser uses to remember things, like if you're logged in to Codecademy).
+
+Check out the code in the editor. Looks familiar, doesn't it? That's because a lot of it is regular old HTML! The PHP code is written in the <?php and ?> . See how it generates numbers, creates lists, and adds text directly to your webpage?
+
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <link type='text/css' rel='stylesheet' href='style.css'/>
+
+    <title>PHP!</title>
+
+  </head>
+
+  <body>
+
+    <img src="http://i1061.photobucket.com/albums/t480/ericqweinstein/php-logo_zps408c82d7.png"/>
+
+    <div class="header"><h1>
+
+      <?php
+      $welcome = "Let's get started with PHP!";
+      echo $welcome;
+      ?>
+
+    </h1>
+</div>
+
+    <p><strong>Generate a list:</strong>
+
+      <?php
+      for ($number = 1; $number <= 10; $number++) {
+
+        if ($number <= 9) {
+
+            echo $number . ", ";
+
+        } else {
+
+            echo $number . "!";
+
+        }
+
+      }; ?>
+
+    </p>
+
+    <p><strong>Things you can do:</strong>
+
+      <?php
+
+        $things = array("Talk to databases",
+
+        "Send cookies", "Evaluate form data",
+
+        "Build dynamic webpages");
+
+        foreach ($things as $thing) {
+
+            echo "<li>$thing</li>";
+
+        }
+
+        
+        unset($thing);
+
+      ?>
+
+    </p>
+
+    <p><strong>This jumbled sentence will change every time you click Submit!<strong></p>
+
+    <p>
+
+      <?php
+
+        $words = array("the ", "quick ", "brown ", "fox ",
+        "jumped ", "over ", "the ", "lazy ", "dog ");
+
+        shuffle($words);
+
+        foreach ($words as $word) {
+
+            echo $word;
+
+        };
+
+        
+        unset($word);
+
+      ?>
+
+    </p>
+
+  </body>
+
+</html>
+
+
+Why Learn PHP?
+
+"So what?" You might say. "I can do that with JavaScript." And that's true! But JavaScript's knowledge can be limited.
+
+JavaScript generally runs in the browser, or client. This means it only really knows what's going on in your browser, plus whatever information it gets from the website(s) you're connecting to.
+
+PHP, on the other hand, runs on the same computer as the website you're visiting, which is known as the server. This means that it has access to all the information and files on that machine, which allows it to construct custom HTML pages to send to your browser, handle cookies, and run tasks or perform calculations with data from that website.
+
+
+Instructions
+
+We've written a little PHP in the editor to the right, but it's not complete! On line 8, type My first line of PHP! between the ""s.
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+	</head>
+
+	<body>
+
+        <p>
+
+          <?php
+
+            echo "My first line of PHP!";
+ 
+          ?>
+
+        </p>
+
+	</body>
+
+</html>
+
+
+What's Object-Oriented Programming?
+
+
+PHP is an object-oriented programming language, which means that you can create objects, which can contain variables and functions.
+
+When talking about objects, you refer to variables belonging to these objects as properties (or attributes or fields), and functions are called methods.
+
+These objects are essential when dealing with PHP, as almost everything is an object: for example, functions or arrays are objects, too!
+ And this shows why we use objects: we can bundle our functions and data in one place, we can create objects easily using classes (object constructors), so we can create lots of instances (objects, which have been constructed via a class), which contain mostly the same data, except some little nuances.
+
+On the right, there is a Person class and one instance stored in $me on line 32. Then the greet() method of the $me object is called and the result is echod on line 35.
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+      <title> Introduction to Object-Oriented Programming </title>
+
+      <link type='text/css' rel='stylesheet' href='style.css'/>
+
+    </head>
+
+	<body>
+
+      <p>
+
+      <?php
+
+        // The code below creates the class
+
+        class Person {
+
+            // Creating some properties (variables tied to an object)
+
+            public $isAlive = true;
+
+            public $firstname;
+
+            public $lastname;
+
+            public $age;
+
+            
+            // Assigning the values
+
+            public function __construct($firstname, $lastname, $age) {
+
+              $this->firstname = $firstname;
+
+              $this->lastname = $lastname;
+
+              $this->age = $age;
+
+            }
+
+            
+            // Creating a method (function tied to an object)
+
+            public function greet() {
+
+              return "Hello, my name is " . $this->firstname . " " . $this->lastname . ". Nice to meet you! :-)";
+
+            }
+
+          }
+
+          
+        // Creating a new person called "boring 12345", who is 12345 years old ;-)
+
+        $me = new Person('boring', '12345', 12345);
+
+        
+        // Printing out, what the greet method returns
+
+        echo $me->greet();
+ 
+        ?>
+
+        </p>
+
+    </body>
+
+</html>
+
+
+Objects in Real Life
+
+
+How object-oriented programming is used in real life can be shown with a forum as an example:
+
+Every forum user (object) has the same rights: he can log in and write (methods), can contain some settings (properties), but every user has a different name (another property).
+
+Every user is created easily, as you create a new instance of a User class when you sign up. And as we've seen, there are some properties and methods that every instance has in common (such as logging in and writing), and there are some which are unique (such as each user's name).
+
+And without object-oriented programming—OOP for short—this could not be done that easily. ;-)
+
+Another example: on the right, there is a Person class, so every new Person has some properties, like $isAlive or $firstname, and a method greet().
+
+Right now there is only one instance of the Person class: $me. But we'll reconstruct this class and you'll even create another instance of the class, so your name will be echod, too.
+
+In the next exercises we are going to create some classes, so let's start coding. :-)
+
+
+Building Your First Class
+
+
+Great, now you know the technical terms. :-)
+ Let's start coding by reconstructing the Person class.
+
+The basic class syntax looks like the following:
+class Classname {
+
+}
+
+
+The class keyword means that you create a new class; the syntax is quite similar to the function syntax.
+
+And you can create new instances of this class using the following syntax:
+$obj1 = new Classname();
+
+
+The new keyword means that you create a new object and ensures that your arguments are added as properties, so it initializes the constructor (which we are going to deal with later).
+
+We don't need to pass in any arguments, as we haven't added any properties (which can store different values depending on the instance) quite yet.
+
+01. Add a pair of<?php ?> tags in line 9.
+02. Create a Person class.
+03. Create two instances of the Person class: $teacher and $student.
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+	  <title>Reconstructing the Person Class</title>
+
+      <link type='text/css' rel='stylesheet' href='style.css'/>
+
+	</head>
+
+	<body>
+
+      <p>
+
+      <?php
+
+        <!-- Your code here -->
+
+        class Person {
+
+        
+    
+        }
+
+        $teacher = new Person();
+
+        $student = new Person();
+
+        ?>
+
+      </p>
+
+    </body>
+
+</html>
+
+Property Panic (1)
+
+
+Great work, now we can add some properties to our class.
+
+As you remember, properties are pieces of data bound to an object, and you can imagine an object as a bundle of information and actions.
+class Fruit {
+  public $count = 3;
+  public $type;
+}
+
+$apple = new Fruit();
+$apple->type = "apple";
+print $apple->count; // 3
+print $apple->type;  // apple
+
+01. In the example above, we first create a new class called Fruit.
+02. Then we add a property, $count, and set its value to 3.
+03. Next, we add a property, $type, but don't store anything in it yet.
+04. After the class definition, we create new instance of Fruit and store it in $apple.
+05. Then we set the $type property of $apple to the string "apple".
+06. Finally, we print out the two properties of $apple.
+
+01. Add a public $isAlive property to the Person class and assign the value true to $isAlive, like the $count property above.
+02. Add three further public properties to thePerson class: $firstname, $lastname and $age. Don't assign any values to these like the $type property above.
+03. echo the value of the $teacher's $isAlive property.
+
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+	  <title>Reconstructing the Person Class</title>
+
+      <link type='text/css' rel='stylesheet' href='style.css'/>
+
+	</head>
+
+	<body>
+
+      <p>
+
+      <?php
+
+        <!-- Your code here -->
+
+        class Person {
+
+            public $isAlive = true;
+
+            public $firstname;
+
+            public $lastname;
+
+            public $age;
+
+        }
+
+        $teacher = new Person();
+
+        $student = new Person();
+
+        echo $teacher->$isAlive;
+
+        ?>
+
+      </p>
+
+    </body>
+
+</html>
+
+
+Property Panic (2)
+
+
+Good job, now we have some properties.
+ But right now $teacher and $student are the same, which should be changed immediately, correct? :-)
+
+The solution: we have to create a constructor to create different objects. This constructor is also a method, but you don't need to worry about this fact just yet.
+
+The syntax:
+public function __construct($prop1, $prop2) {
+  $this->prop1 = $prop1;
+  $this->prop2 = $prop2;
+}
+
+
+So you should remember the public keyword and the arrow notation.
+
+Some new things:
+01. You're creating a function bound to a class (a method).
+02. The constructor method has to be called __construct().
+03. Finally, the weird way to assign the values: $this->prop1 = $prop1 means that the value you pass in the __construct() function via the new keyword is assigned to $this, which represents the object you are dealing with, and ->prop1 is the actual property of the object.
+
+By creating a new instance using the new keyword, you actually call this __construct() method, which constructs the object. And that's why we have to pass in some arguments when we create an instance of a class, since this is how the properties get set!
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+	  <title>Reconstructing the Person Class</title>
+
+      <link type='text/css' rel='stylesheet' href='style.css'/>
+
+	</head>
+
+	<body>
+
+      <p>
+
+      <?php
+
+        class Person {
+
+            public $isAlive = true;
+
+            public $firstname;
+
+            public $lastname;
+
+            public $age;
+
+            
+            public function __construct($firstname, $lastname, $age) {
+
+                $this->firstname = $firstname;
+
+                $this->lastname = $lastname;
+
+                $this->age = $age;
+
+        }
+
+        }
+
+        $teacher = new Person("boring","12345",12345);
+
+        $student = new Person("exciting","54321",54321);
+
+        echo $teacher->isAlive;
+
+        echo $student->age;
+
+        ?>
+
+      </p>
+
+    </body>
+
+</html>
+
+
+
+A Method to the Madness
+
+Great work, now the hardest and longest part is behind us. :-)
+
+As you've seen, methods—functions bundled into objects—have the following syntax:
+public function funcname($optionalParameter) {
+  // Do something
+}
+
+
+And now we know the __construct function is a special one, which is called when a new object is created using a new keyword.
+ Furthermore, we've learnt we have to use the $this keyword, if we want to access some properties in a class.
+
+So if we want a method to return a sentence containing the firstname, we would have to use $this->firstname. (As you see, there is no $ when you access a property in a class.)
+
+Calling a method is similar to accessing a property, you just have to add the parentheses:
+$obj1 -> meth1();
+
+
+Instructions
+ 
+01. Add a method called greet() to your class. This method ought to return "Hello, my name is " . $this->firstname . " " . $this->lastname . ". Nice to meet you! :-)" .
+02. Call this new greet() method on $teacher and $student and echo the result to the page.
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+	  <title>Reconstructing the Person Class</title>
+
+      <link type='text/css' rel='stylesheet' href='style.css'/>
+
+	</head>
+
+	<body>
+
+      <p>
+
+      <?php
+
+        class Person {
+
+            public $isAlive = true;
+
+            public $firstname;
+
+            public $lastname;
+
+            public $age;
+
+            
+
+            public function __construct($firstname, $lastname, $age) {
+
+                $this->firstname = $firstname;
+
+                $this->lastname = $lastname;
+
+                $this->age = $age;
+
+        }
+
+        
+
+            public function greet() {
+
+                return "Hello, my name is " . $this->firstname . " " . $this->lastname . ". Nice to meet you! :-)";
+
+            }
+
+        
+
+        }
+
+        $teacher = new Person("boring","12345",12345);
+
+        $student = new Person("exciting","54321",54321);
+
+        echo $teacher->isAlive;
+
+        echo $student->age;
+
+        
+
+        echo $teacher->greet();
+
+        echo $student->greet();
+
+        ?>
+
+      </p>
+
+    </body>
+
+</html>
+
+
+
+Putting It All Together, Part I
+
+
+Well done! You've reconstructed the Person class.
+
+Let's create another class: a Dog class. It should have a public property $numLegs, which stores the value 4. Furthermore, there should be the possibility to give every dog a $name using a __constructor.
+
+Of course we also need some methods, as a dog is able to bark(). Our dogs are also able to introduce themselves, to greet(), so we'll also need a method for this.
+
+At last we'll need two cute dogs. :-)
+
+That's it. Let's start!
+
+Note: You'll find the basic syntax for the tasks in the hints, so don't worry. :-)
+And although this looks like a huge task, it's actually quite easy. :-)
+
+So this time let's create our class and add the properties.
+
+
+Instructions
+ 
+01. Add the <?php ?> tag.
+02. Create a Dog class.
+03. Add a public property called $numLegs, which stores the value 4 to the Dog class.
+04. Add another public property called $name, which doesn't contain a value.
+05. Add the __construct()or method, which accepts $name as a parameter.
+06. In this __construct()or method, add some code, so $this->name contains $name.
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+	  <title> Practice makes perfect! </title>
+
+      <link type='text/css' rel='stylesheet' href='style.css'/>
+
+	</head>
+
+	<body>
+
+      <p>
+
+      <?php
+
+        class Dog {
+
+         public $numLegs = 4;
+
+         public $name;
+
+         public function __construct ($name) {
+
+             $this->name = $name;
+
+         }
+
+        }
+
+        ?>
+        
+    
+      </p>
+
+    </body>
+
+</html>
+
+
+
+Putting It All Together, Part II
+
+
+Good job, we're almost there. :-)
+
+Now let's add two further methods and let's create some objects.
+
+
+Instructions
+ 
+01. Add a public method to the Dog class called bark(), which returns "Woof!".
+02. Add a public method called greet() to the Dog class. This method ought to return a nice sentence containing the $name property of the Dog, which introduces himself.
+03. Create two instances of the Dog class and store the one with the $name "Barker" in the variable $dog1 and the other one with the $name "Amigo" in the variable $dog2.
+04. As you might have expected, call the bark() method on $dog1 and echo the result.
+05. The last one: Call the greet() method on $dog2 and echo the result.
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+	  <title> Practice makes perfect! </title>
+
+      <link type='text/css' rel='stylesheet' href='style.css'/>
+
+	</head>
+
+	<body>
+
+      <p>
+
+      <?php
+
+        class Dog {
+
+         public $numLegs = 4;
+
+         public $name;
+
+         public function __construct ($name) {
+
+             $this->name = $name;
+
+         }
+
+         public function bark() {
+
+             return "Woof!";
+
+         }
+
+         
+
+         public function greet () {
+
+             return "Hello I'm a dog called " . $name;
+
+         }
+
+        }
+
+        $dog1 = new Dog("Barker");
+
+        $dog2 = new Dog("Amigo");
+
+        
+
+        echo $dog1->bark();
+
+        echo $dog2->greet();
+
+        ?>
+        
+    
+      </p>
+
+    </body>
+
+</html>
+
+
+
+Challenge Time
+
+
+Awesome! Now let's try the same without the training wheels. :-P
+
+Let's create a Cat class, which has two public properties: an $isAlive property storing the value true and a $numLegs property containing the value 4.
+
+There should be a public $name property, which should get a value when a new object is created, so assign the value to $name via the __construct() method.
+
+Then I also want these Cats to be able to meow, so add a meow() method, which returns "Meow meow".
+
+Finally, create an instance of the Cat class, which has the $name "CodeCat" and store it in the variable $cat1. Then call the meow() method on this cat.
+
+Sounds doable? Then let's start the challenge. :-)
+
+
+
+Instructions
+ 
+01. Create a class called Cat.
+02. Add two public properties to this class: $isAlive ought to store the value true and $numLegsshould contain the value 4.
+03. Add a public $name property, which gets its value via the __construct()or.
+04. Add a public method called meow(), which returns "Meow meow".
+05. Create an instance of the Cat class, which has the $name "CodeCat".
+06. Call the meow() method on this Cat and echo the result.
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+	  <title> Challenge Time! </title>
+
+      <link type='text/css' rel='stylesheet' href='style.css'/>
+
+	</head>
+
+	<body>
+
+      <p>
+
+        <?php
+
+          class Cat {
+
+              public $isAlive = true;
+
+              public $numLegs = 4;
+
+              public $name;
+
+              
+
+              public function __construct ($name) {
+
+                  $this name->$name;
+
+                  
+              }
+
+              public meow () {
+
+                  return "Meow meow";
+
+              }
+
+          }
+
+          $cat1 = new Cat("CodeCat");
+
+          echo $cat1->meow();
+
+        ?>
+
+      </p>
+
+    </body>
+
+</html>
+
+
+Class and Object Methods
+
+
+Remember when we covered built-in functions in PHP? Well, we can combine that idea with our knowledge of classes and objects: that is, there are built-in PHP functions that tell us interesting information about the classes and objects we've created!
+
+Check out the example below. We're demoing three useful built-in methods: is_a(), which we use to find out if a particular object is an instance of a given class; property_exists(), to see if an object has a given property; and method_exists(), to see if an object has a given method.
+
+Note that the first argument is the object we're checking, and the second is the class, property, or method name as a "string".
+
+<html>
+
+  <head>
+
+    <title>Class and Object Methods</title>
+
+  </head>
+
+  <body>
+
+    <p>
+
+      <?php
+
+        class Person {
+
+          public $isAlive = true;
+
+          
+
+          function __construct($name) {
+
+              $this->name = $name;
+
+          }
+
+          
+
+          public function dance() {
+
+            return "I'm dancing!";
+
+          }
+
+        }
+
+        
+
+        $me = new Person("Shane");
+
+        if (is_a($me, "Person")) {
+
+          echo "I'm a person, ";
+
+        }
+
+        if (property_exists($me, "name")) {
+
+          echo "I have a name, ";
+
+        }
+
+        if (method_exists($me, "dance")) {
+
+          echo "and I know how to dance!";
+
+        }
+
+      ?>
+
+    </p>
+
+  </body>
+
+</html>
+
+
+Inheritance
+
+
+As you've been thinking about classes and objects, you might have realized that one class might actually be a specialized type of another class. For instance, you might have a Vehicle class and a Truck class, and it would probably save you an awful lot of typing if you could somehow specify that Truck instances should automatically have many of the same properties and methods as Vehicle instances.
+
+PHP allows us to accomplish this through a process called inheritance. Inheritance is a way for one class to take on the properties or methods of another class. You could say that the one class extends the other. This is used to express an "is-a" relationship—for example, a Truck "is-a" Vehicle, so it could inherit from Vehicle, but a Motorcycle isn't a Truck, so it shouldn't inherit from Truck (though both could inherit from Vehicle).
+
+We can cause one PHP class to inherit from another with the extends keyword.
+
+Check out the code below. We've created two classes, Shape and Square, with Square inheriting from Shape.
+
+We didn't specify that Square has a $hasSides property, but it should inherit it from Shape.
+
+Complete the if statement on line 18 by using the property_exists() method to check if $square has the "hasSides" property.
+
+<html>
+
+  <head>
+
+    <title>The Shape of Things to Come</title>
+
+  </head>
+
+  <body>
+
+    <p>
+
+      <?php
+
+        class Shape {
+
+          public $hasSides = true;
+
+        }
+
+        
+
+        class Square extends Shape {
+
+        
+
+        }
+
+        
+
+        $square = new Square();
+
+        // Add your code below!
+
+        if (property_exists($square,"hasSides")) {
+
+          echo "I have sides!";
+
+        }
+
+      ?>
+
+    </p>
+
+  </body>
+
+</html>
+
+
+Overriding Parent Methods
+
+Nice work!
+
+Sometimes we want a child class (or subclass) to be able to override a property or method of its parent class (or superclass).
+
+For instance, we might have a Shape class with a $sides property set to true, but we might want Square to override this property and set $sides to 4 (since a square always has four sides). That would look something like this:
+
+class Shape {
+  $sides = true;
+}
+
+class Square extends Shape {
+  $sides = 4;
+}
+
+It's pretty easy—you just create a new property or method in the child class with the same name as the one in the parent class, and the child's version will always take precedence over the inherited version.
+
+Instructions
+
+We've created a Vehicle class in the editor. 
+01. Create a child class, Bicycle, that overrides the Vehicle class' public function honk() and replaces it with a function that returns "Beep beep!".
+02. Create a $bicycle instance of the Bicycle class and echo the result of calling its honk() method. 
+
+<html>
+
+  <head>
+
+    <title>Override!</title>
+
+  </head>
+
+  <body>
+
+    <p>
+
+      <?php
+
+        class Vehicle {
+
+          public function honk() {
+
+            return "HONK HONK!";
+
+          }
+
+        }
+
+        // Add your code below!
+
+        
+
+        class Bicycle extends Vehicle {
+
+        
+
+        public function honk() {
+
+            return "Beep beep!";
+
+        }
+
+        
+   
+        }
+
+        
+ 
+       $bicycle = new Bicycle();
+
+        echo $bicycle->honk();
+
+      ?>
+
+    </p>
+
+  </body>
+
+</html>
+
+
+The Final Word
+
+When you were a kid, one of your parents might have told you: "You're not doing that, and that's final!"
+
+In PHP, a parent class can prevent its methods from being overridden by its children with—you guessed it—the final keyword.
+
+You'd want to use the final keyword in your code to control what methods can be modified by a class' subclasses. For instance, you might want all Vehicles to have the same drive() method no matter what, so you would prefix its method definition with final, like so:
+
+class Vehicle {
+  final public function drive() {
+    return "I'm drivin' here!";
+  }
+}
+
+Instructions
+
+Update your code from the last exercise to use the final keyword for the honk() function inside Vehicle. Note how now instead of getting "Beep beep!", we get an error. No overriding here!
+
+<html>
+
+  <head>
+
+    <title>Override!</title>
+
+  </head>
+
+  <body>
+
+    <p>
+
+      <?php
+
+        class Vehicle {
+
+          final public function honk() {
+
+            return "HONK HONK!";
+
+          }
+
+        }
+
+        // Add your code below!
+
+        
+
+        class Bicycle extends Vehicle {
+
+        
+
+        public function honk() {
+
+            return "Beep beep!";
+
+        }
+
+        
+   
+        }
+
+        
+        $bicycle = new Bicycle();
+
+        echo $bicycle->honk();
+
+      ?>
+
+    </p>
+
+  </body>
+
+</html>
+
+(The above code returns an error of "Fatal error: Cannot override final method Vehicle::honk() on line 21")
+
+
+Class Constants and Scope Resolution
+
+We've talked a lot about changing variables in PHP, but sometimes we want variables that don't change. These are prefixed with the const keyword (short for constant).
+
+PHP lets us set constants on a class-by-class basis! Each class has its own scope, which is the context in which its variables can be used.
+class Immortal extends Person {
+  // Immortals never die!
+  const alive = true;
+}
+
+// If true...
+if (Immortal::alive) {
+  echo "I live forever!";
+}
+// echoes "I live forever!"
+
+
+In the example above, we use :: to access the alive constant inside the Immortal class.
+
+Note that constants do not start with $.
+
+Instructions
+ 
+We've created the Ninja class for you in the editor.
+01. Set a stealth constant to the string "MAXIMUM".
+02. Then echo it to the page using Ninja::stealth.
+
+That :: is the scope resolution operator.
+
+<html>
+
+  <head>
+    <title>Scope it Out!</title>
+
+  </head>
+
+  <body>
+
+    <p>
+
+      <?php
+
+      class Person {
+
+      
+    
+      }
+
+      class Ninja extends Person {
+
+        // Add your code here...
+
+        const stealth = "MAXIMUM";
+  
+      }
+
+      // ...and here!
+
+
+        echo Ninja::stealth;
+
+      
+
+      ?>
+
+    </p>
+
+  </body>
+
+</html>
+
+
+The Static Keyword
+
+Nice work!
+
+You probably noticed that we could access the Ninja class constant without actually creating an instance of Ninja, and if you're particularly precocious, you might be wondering whether it's possible to access class properties or methods without creating an instance of the class. The answer: yes!
+
+The static keyword lets you use a class' property or method without having to create an instance of that class. It works like this:
+class Person {
+  public static $isAlive = "Yep!"
+  public static function greet() {
+    echo "Hello there!";
+  }
+}
+
+echo Person::$isAlive;
+// prints "Yep!"
+Person::greet();
+// prints "Hello there!"
+
+When combined with the scope resolution operator, this lets us access class information without having to instantiate anything. Neat, right?
+
+
+Instructions
+
+We've created a King class with a proclaim() method in the editor to the right. Go ahead and call the proclaim() method using the static keyword—no instances necessary!
+
+<html>
+
+  <head>
+
+    <title></title>
+
+  </head>
+
+  <body>
+
+    <p>
+
+      <?php
+
+        class King {
+
+          // Modify the code on line 10...
+
+          public static function proclaim() {
+
+            echo "A kingly proclamation!";
+
+          }
+
+        }
+
+        // ...and call the method below!
+
+        echo King::proclaim();
+
+      ?>
+
+    </p>
+
+  </body>
+
+</html>
+
+
+
+Putting It All Together
+
+
+Great work! You've learned a lot so far, including:
+— Useful object and class methods, like property_exists() and method_exists();
+— Inheritance;
+— How child classes can override the behavior of their parents;
+— How parent classes can prevent this with the final keyword;
+— What class constants are and how to reach them using the scope resolution operator, ::;
+— How to access class methods and properties without creating an instance of the class by using the static keyword and the scope resolution operator together.
+
+Let's put all our newfound knowledge to work in one final (pun intended) exercise!
+
+Instructions
+ 
+01. Create a class called Person. It should contain only a single method, say(), that should take no arguments and echo: `"Here are my thoughts!";
+02. Create another class, Blogger, that inherits from Person. It should contain only a single constant, cats, set to 50.
+03. Use the static keyword and the scope resolution operator to call Blogger's inherited say() method without creating an instance of the class.
+04. Use the scope resolution operator to echo the cats constant to the page.
+
+<html>
+
+  <head>
+
+    <title></title>
+
+  </head>
+
+  <body>
+
+    <p>
+
+        <?php
+
+        class Person {
+
+            public static function say()
+
+            {
+
+                echo "Here are my thoughts!";
+
+            }
+
+        }
+
+      
+
+        class Blogger extends Person {
+
+            const cats = 50;
+
+        }
+
+        
+
+        echo Blogger::say();
+
+        
+
+        echo Blogger::cats;
+
+        
+
+      ?>
+
+    </p>
+
+  </body>
+
+</html>
+
+
+Review of Arrays
+
+Arrays are a useful way to store multiple values, like numbers, strings, and even other arrays:
+$myArray = array(1, 2, 3);
+
+
+Here we create an array of three numbers. Remember that array positions start from 0; therefore to access the third item in this array, we type:
+$myArray[2];
+
+
+Instructions
+ 
+01. On line 8, set $fruits equal to an array of three strings: 'bananas', 'apples' and 'pears'.
+02. Modify the echo statement on line 9 to display the fruit in the middle of the array (that is, it should echo "apples".
+
+<html>
+
+  <head>
+
+    <title>Array Review</title>
+
+  </head>
+
+  <body>
+
+    <p>
+
+      <?php
+
+        $fruits = array("bananas","apples","pears");
+        
+        echo 'I love eating ' . $fruits[1] . ' too!';
+
+      ?>
+
+    </p>
+
+  </body>
+
+</html>
+
+
+Associative Arrays
+
+
+So far, you have been accessing the values of an array using integers. This is all well and good, but if you want to be more descriptive of your data, you can make use of something called an associative array.
+
+An associative array makes use of (key => value) pairs. Some languages may separate arrays from associative arrays, but PHP treats both as the same.
+
+In the editor, you will see I have declared two variables as arrays. Have a look at the first array and see if you can guess what item those values may refer to?
+
+Now have a look at the array below it. This is an associative array. It's defined as an array like the first one, but see how I have specified keys for each of the values?
+
+Both arrays contain the same values, but in the associative array, we can access the value using a specified "key".
+
+<html>
+
+  <head>
+
+    <title>Associate Arrays</title>
+
+  </head>
+
+  <body>
+
+    <p>
+
+      <?php
+
+        // This is an array using integers as the indices...
+
+        $myArray = array(2012, 'blue', 5);
+
+
+        // ...and this is an associative array:
+
+        $myAssocArray = array('year' => 2012,
+
+                        'colour' => 'blue',
+
+                        'doors' => 5);
+
+        
+    
+        // This code will output "blue"...
+
+        echo $myArray[1];
+
+        echo '<br />';
+
+        
+    
+        // ... and this will also output "blue"!
+
+        echo $myAssocArray['colour'];
+
+      ?>
+
+    </p>
+
+  </body>
+
+</html>
+
+(So associate arrays are basically the same thing as StringStringMaps/IntStringMaps/StringIntMaps/etc.)
+
+
+Using Arrays as Maps
+
+You can think of an associative array (also called a map) as being the same as a normal array, but instead of using an integer to refer to the value, you use a defined key.
+
+While numeric indices may be fine for looping through an array and listing all of the values, what if we need to change a certain value from an array?
+
+
+Instructions
+ 
+01. For each array in the editor, add the value "BMW" to the end of the array. For the associative array, use "make" as the key. You can add a key just as shown in the editor:
+'key' => value
+
+(You'll see a PHP error until you add the missing array elements.)
+
+<html>
+
+  <head>
+
+    <title>Making the Connection</title>
+
+  </head>
+
+  <body>
+
+    <p>
+
+      <?php
+
+        // This is an array using integers as the indices.
+
+        // Add 'BMW' as the last element in the array!
+
+        $car = array(2012, 'blue', 5, 'BMW');
+
+
+        // This is an associative array.
+
+        // Add the make => 'BMW' key/value pair!
+
+        $assocCar = array('year' => 2012,
+
+                   'colour' => 'blue',
+
+                   'doors' => 5,
+
+                   'make' => 'BMW');
+
+            
+        // This code should output "BMW"...
+
+        echo $car[3];
+
+        echo '<br />';
+
+        
+    
+        // ...and so should this!
+
+        echo $assocCar['make'];
+
+      ?>
+
+    </p>
+
+  </body>
+
+</html>
+
+
+Accessing Associative Arrays
+
+When accessing the values from either type of array, the only difference is whether you use an integer, or a specified key:
+echo $car[1];
+// prints 2012
+
+echo $assocCar['year'];
+// prints 2012
+
+
+This exercise will demonstrate how useful specified keys in an array can be.
+
+
+Instructions
+
+
+Using the arrays from the previous exercises, write an echo statement on line 22 to talk about your car (beyond the fact that it's blue). Try using both arrays to describe the car. Which one makes it easier?
+
+<html>
+
+  <head>
+
+    <title>Accessing Associative Arrays</title>
+
+  </head>
+
+  <body>
+    <p>
+
+      <?php
+
+        // This is an array using integers as the indices...
+
+        $myArray = array(2012, 'blue', 5, 'BMW');
+
+
+        // ...and this is an associative array:
+
+        $myAssocArray = array('year' => 2012,
+
+                        'colour' => 'blue',
+
+                        'doors' => 5,
+
+                        'make' => 'BMW');
+
+        
+    
+        // This code will output "blue".
+
+        echo $myArray[1];
+
+        echo '<br />';
+
+        
+    
+        // Add your code here!
+
+        echo "My favourite colour is " . $myArray[1] . " but i hate " . $myAssocArray['make'];
+
+      ?>
+
+    </p>
+
+  </body>
+
+</html>
+
+

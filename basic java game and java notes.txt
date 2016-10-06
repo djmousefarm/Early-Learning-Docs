@@ -1,0 +1,634 @@
+// Check if the user is ready to play!
+
+
+
+confirm("I am ready to play!!");
+
+
+
+var age = prompt("What's your age?");
+
+
+
+if (age < 13)
+
+{
+    
+console.log("You can play but i won't be held responsible for the warping of your fragile little mind!!")
+
+}
+
+else
+
+{
+    
+console.log("You're plenty old enough for this!!  Let's get cracking!!")
+
+}
+
+console.log("You are at a Justin Bieber concert, and you hear this lyric 'Lace my shoes off, start racing.'")
+
+console.log("Suddenly, Bieber stops and says, 'Who wants to race me?'")
+
+
+
+var userAnswer = prompt("Do you want to race Bieber on stage?");
+
+
+
+if (userAnswer === "yes")
+
+{
+
+    console.log("You and Bieber start racing. It's neck and neck! You win by a shoelace!")
+
+}
+
+else
+
+{
+
+    console.log("Oh no! Bieber shakes his head and sings 'I set a pace, so i can race without pacing.'")
+
+}
+
+var feedback = prompt("Rate my game out of 10!);
+
+
+
+if (feedback > 8)
+
+{
+    
+console.log("Thank you! We should race at the next concert!")
+
+}
+
+else
+
+{
+    
+console.log("I'll keep practicing coding and racing.")
+
+}
+
+***************************
+
+
+(Think this is a general rule well worth remembering but it certainly applies in Java)
+
+"The precedence of each Boolean operator is as follows:
+1.! is evaluated first
+2.&& is evaluated second
+3.|| is evaluated third
+
+Like numerical expressions, every expression within parentheses is evaluated first. Expressions are also read from left to right."
+
+Ternary expressions
+
+"if/else statements can become lengthy even when you simply want to return a value depending on a Boolean expression. Fortunately, Java provides a shortcut that allows you to write if/else statements in a single line of code. It is called the ternary conditional statement.
+
+The term ternary comes from a Latin word that means "composed of three parts". 
+
+These three parts are:
+1.A Boolean expression 
+2.A single statement that gets executed if the Boolean expression is true
+3.A single statement that gets executed if the Boolean expression is false
+
+Here is an example of a ternary conditional statement:
+int pointsScored = 21;
+
+char gameResult = (pointsScored > 20) ? 'W' : 'L';
+System.out.println(gameResult);
+
+In the example above, the int variable called pointsScored is equal to 21. 
+
+The Boolean expression is (pointsScored > 20), which evaluates to true. This will return the value of 'W', which is assigned to the variable gameResult. The value 'W' is printed to the console."
+
+Switches : 
+
+"The conditional statements that we have covered so far require Boolean expressions to determine which code block to run. Java also provides a way to execute code blocks based on whether a block is equal to a specific value. For those specific cases, we can use the switch statement, which helps keep code organized and less wordy.
+
+The switch statement is used as follows:
+int restaurantRating = 3;
+
+switch (restaurantRating) {
+
+    case 1: System.out.println("This restaurant is not my favorite.");
+      break;
+
+    case 2: System.out.println("This restaurant is good.");
+      break;
+
+    case 3: System.out.println("This restaurant is fantastic!");
+      break;
+
+    default: System.out.println("I've never dined at this restaurant.");
+      break;
+}
+
+In the example above, we assigned the int variable restaurantRating a value of 3. The code will print a message to console based on the value of restaurantRating.
+
+In this case, This restaurant is fantastic! is printed to the console.
+
+The break statement will exit the switch statement after a condition is met. Without the break statement, Java will continue to check whether the value of restaurantRating matches any other cases.
+
+The default case is printed only if restaurantRating is not equal to an int with the value of 1, 2, or 3."
+
+Classes : 
+
+"One fundamental concept of object-oriented programming in Java is the class.
+
+A class is a set of instructions that describe how a data structure should behave.
+
+Java provides us with its own set of pre-defined classes, but we are also free to create our own custom classes.
+
+Classes in Java are created as follows:
+//Create a custom Car class
+
+class Car {
+
+}
+
+The example above creates a class named Car. We will define the behavior of the Car data structure in the next exercise."
+
+We created a Java class, but it currently does not do anything; we need to describe the behavior of the class for it to be useful.
+
+Let's start by creating the starting state of our class. We can do this by adding a class constructor to it.
+1.A class constructor will allow us to create Dog instances. With a class constructor, we can set some information about the Dog. 
+2.If we do not create a class constructor, Java provides one that does not allow you to set initial information.
+
+The code below demonstrates how a class constructor is created:
+class Car {
+
+    //The class constructor for the Car class
+    public Car() {
+
+    }
+}
+
+In the example above, we created a class constructor for the Car class. This constructor will be used when we create Car instances later. The public keyword will be explained later in this course.
+
+When we create a new class, we probably have specific details that we want the class to include. We save those specific details into instance variables.
+
+Here is an instance variable in the Car class that describes a detail that we might want to associate with a car:
+class Car {
+
+    //Using instance variables to model our Car class after a real-life car
+    int modelYear;
+
+    public Car() {
+
+    }
+}
+
+In the example above, we created the instance variable named modelYear. Instance variables model real-world car attributes, such as the model year of a car. Finally, the instance variable is represented by the int data type.
+
+By adding a class constructor and creating instance variables, we will soon be able to use the Dog class. However, the class constructor Dog is still empty. Let's modify this by adding parameters to the Dog constructor.
+
+You can think of parameters like options at an ice cream store. You can choose to order a traditional ice cream cone, but other times you may want to specify the size of the cone or the flavor of the ice cream. 
+
+For the Dog class, we can specify the initial dog age by adding parameters to the class constructor.
+1.Parameters allow data types to be created with specified attributes. 
+
+Let's add parameters to our Car class constructor:
+class Car {
+
+    //Use instance variables to model our Car class after a real-life car
+    int modelYear;
+
+    public Car(int year) {
+
+        modelYear = year;
+    }
+}
+
+
+In the example above, we add the int parameter year to the Car constructor. 
+
+The value of modelYear will equal the int value that is specified when we first use this class constructor.
+
+We're almost ready to use our custom Dog class! But first, we need to understand how to structure and run our Java program.
+
+You may have noticed a mysterious looking line of code in previous lessons that looks like this:
+public static void main(String[] args) {
+
+}
+
+
+This is Java's built-in main method. We will learn more about methods and keywords around the main method later on, but first let's understand what the purpose of main is.
+1.When Java runs your program, the code inside of the main method is executed.
+
+For now, you can ignore the keywords in the main method that we have not yet covered. You will learn about them later in the course.
+
+Now that we have a main method in our class, we're ready to start using the Dog class.
+
+To use the Dog class, we must create an instance of the Dog class. An instance of a class is known as an object in Java. 
+
+The example below demonstrates how to create a Car object:
+class Car {
+
+    int modelYear;
+
+    public Car(int year) {
+
+        modelYear = year;
+
+    }
+
+    public static void main(String[] args){
+
+        Car myFastCar = new Car(2007);
+
+    }
+}
+
+
+In the example above, we create a Car object named myFastCar. When creating myFastCar, we used the class constructor and specified a value for the required int parameter year. 
+
+2007 is the model year of myFastCar. Note that we declared the new object inside the main method.
+
+We created a Dog object inside of the main method, but...nothing happened.
+
+Although we created an object inside of main method, we did not print out anything about the spike object itself, nor did we instruct the class to perform any actions. Let's learn about how methods in Java are used to define actions.
+
+A method is a pre-defined set of instructions. Methods are declared within a class. Java provides some pre-defined methods available to all classes, but we can create our own as well.
+
+Let's create a new method:
+class Car {
+
+    int modelYear;
+
+    public Car(int year) {
+
+        modelYear = year;
+
+    }
+
+    //Our new method to help us get "started"
+    public void startEngine() {
+
+        System.out.println("Vroom!");
+
+    }
+
+    public static void main(String[] args){
+
+        Car myFastCar = new Car(2007);
+
+    }
+}
+
+
+In the example above, we added a method called startEngine. When the method is used, it will print out Vroom!. The void keyword will be explained later in this course.
+
+Note that the startEngine method is created outside of the main method, like the constructor was.
+
+Now the bark method is available to use on the spike object. We can do this by calling the method on spike.
+
+Here is an example of calling a method on an object using the Car class:
+class Car {
+
+    int modelYear;
+
+    public Car(int year) {
+
+        modelYear = year;
+
+    }
+
+    public void startEngine() {
+
+        System.out.println("Vroom!");
+
+    }
+
+    public static void main(String[] args){
+
+        Car myFastCar = new Car(2007);
+        myFastCar.startEngine();
+    }
+
+In the example above, we call the startEngine method on the myFastCar object. Again, this occurs inside of the main method. Running the program results in printing Vroom! to the console.
+
+Similar to constructors, you can customize methods to accept parameters.
+class Car {
+
+    int modelYear;
+
+    public Car(int year) {
+
+        modelYear = year;
+
+    }
+
+    public void startEngine() {
+        System.out.println("Vroom!");
+    }
+
+    public void drive(int distanceInMiles) {
+
+        System.out.println("Miles driven: " + distanceInMiles);
+
+    }
+
+    public static void main(String[] args){
+
+        Car myFastCar = new Car(2007);
+        myFastCar.startEngine();
+        myFastCar.drive(1628);
+
+    }
+
+
+In the example above, we create a drive method that accepts an int parameter called distanceInMiles. In the main method, we call the drive method on the myFastCar object and provide an int parameter of 1628.
+
+Calling the drive method on myFastCar will result in printing Miles driven: 1628 to the console
+
+Let's explore one of the keywords used in declaring a method. In past exercises, when creating new methods, we used the keyword void.
+
+The void keyword indicates that no value should be returned by the method after it executes all the logic in the method. If we do want the method to return a value after it finishes running, we can specify the return type.
+1.The void keyword (which means "completely empty") indicates to the method that no value is returned after calling that method.
+2.Alternatively, we can use data type keywords (such asint, char, etc.) to specify that a method should return a value of that type.
+
+An example of indicating a return value for a method is below:
+class Car {
+
+    int modelYear;
+
+    public Car(int year) {
+
+        modelYear = year;
+
+    }
+
+    public void startEngine() {
+
+        System.out.println("Vroom!");
+
+    }
+
+    public void drive(int distanceInMiles) {
+
+        System.out.println("Your car drove " + distanceInMiles + " miles!");
+
+    }
+
+    public int numberOfTires() {
+
+        return 4;
+
+    }
+
+    public static void main(String[] args){
+
+        Car myFastCar = new Car(2007)
+        myFastCar.startEngine();
+        myFastCar.drive(1628);
+
+        int tires = myFastCar.numberOfTires();
+        System.out.println(tires);
+
+    }
+}
+
+In the example above, we created the numberOfTires method. This method specifies that it will return an int data type. Inside of the method, we used the return keyword to return the value of 4 which is an int type.
+
+Within main, we called the numberOfTires method on myFastCar. Since the method returns an int value of 4, we store the value within an int variable called tires. We then print the value of tires to the console.
+
+You've created a fully functional Dog class. Congratulations!
+
+One of the object-oriented programming concepts that allows us to reuse and maintain code more efficiently is called inheritance. It is used to share or inherit behavior from another class. Let's look at an example:
+class Car extends Vehicle {
+
+    int modelYear;
+
+    public Car(int year) {
+
+        modelYear = year;
+
+    }
+
+    //Other methods omitted for brevity...
+
+    public static void main(String[] args){
+
+        Car myFastCar = new Car(2007)
+        myFastCar.checkBatteryStatus();
+
+    }
+}
+
+
+class Vehicle {
+
+    public void checkBatteryStatus() {
+
+        System.out.println("The battery is fully charged and ready to go!");
+
+    }
+}
+
+
+In the example above, the extends keyword is used to indicate that the Car class inherits the behavior defined in the Vehicle class. This makes sense, since a car is a type of vehicle.
+
+Within the main method of Car, we call the checkBatteryStatus method on myFastCar. Since Car inherits from Vehicle, we can use methods defined in Vehicle on Car objects.
+
+Let's review everything that we've learned about object-oriented programming in Java so far.
+
+Class: a blueprint for how a data structure should function
+
+Constructor: instructs the class to set up the initial state of an object
+
+Object: instance of a class that stores the state of a class
+
+Method: set of instructions that can be called on an object
+
+Parameter: values that can be specified when creating an object or calling a method
+
+Return value: specifies the data type that a method will return after it runs
+
+Inheritance: allows one class to use functionality defined in another class
+
+Loops and arrays : (Note : For loops appear to be in the syntax that Inspire uses!)
+
+When you provide a set of instructions in a method, you might find that a common task is to manipulate an entire set of data. Java conveniently provides control statements to run a task repeatedly. The control statement we will explore is called the for loop.
+
+The for loop repeatedly runs a block of code until a specified condition is met. 
+
+The example below shows how a for loop is used:
+for (int counter = 0; counter < 5; counter++) {
+
+    System.out.println("The counter value is: " + counter);
+
+}
+
+
+The statements within the parentheses of for loop compose the following parts:
+1.Initialization: the int variable named counter is initialized to the value of 0 before the loop is run.
+
+2. Test condition: the Boolean expression counter < 5 is a conditional statement that is evaluated before the code inside the control statement is run every loop. If the expression evaluates to true, the code in the block will run. Otherwise, if the expression evalutes to false, the for loop will stop running.
+
+3. Increment: Each time the loop completes, the increment statement is run. The statement counter++ increases the value of counter by 1 after each loop.
+
+In the example above, the for loop initially executes the code block in the sample code above because the initial value of counter is less than 5, which passes the test condition. 
+
+The value of counter is then incremented by 1 in the increment. 
+
+The code block will execute again because counter is still less than 5. This cycle will continue until counter is no longer less than 5.
+
+Please note that similar to the if-then statement, no semicolon is necessary.
+
+For loops will be useful when reading and manipulating Java data structures. Let's talk about a few data structures that are built into Java. The first data structure we will explore is called the ArrayList.
+
+The ArrayList stores a list of data of a specified type. Let's go through an example of how to create, or declare, an ArrayList of type Integer. 
+ArrayList<Integer> quizGrades = new ArrayList<Integer>();
+
+
+
+ArrayList is a pre-defined Java class. To use it, we must first create an ArrayList object.
+
+In the example above, we create an ArrayList object called quizGrades that will store data types belonging to the <Integer> class (whole numbers).
+
+You created an ArrayList in the last exercise to store temperature data, but it does not contain any values yet.
+
+Let's add some values of type Integer to the ArrayList, one by one, like this:
+ArrayList<Integer> quizGrades = new ArrayList<Integer>();
+quizGrades.add(95);
+quizGrades.add(87);
+quizGrades.add(83);
+
+In the example above, we call the add method on quizGrades. The add method adds integers to the ArrayList. The values 95, 87, and 83 are added to the list.
+
+Now we can start accessing the temperatures that our ArrayList stores. 
+
+We can access the elements of weeklyTemperatures by using an element's index, or position, in the list.
+
+An element's index refers to its location within an ArrayList. ArrayLists in Java are zero-indexed, which means that the first element in an ArrayList is at a position of 0.
+
+Here is an example of accessing the element in the first position of the list:
+ArrayList<Integer> quizGrades = new ArrayList<Integer>();
+quizGrades.add(95);
+quizGrades.add(87);
+quizGrades.add(73);
+
+System.out.println( quizGrades.get(0) );
+
+The example above will print out the grade value of 95. 
+
+The index of the element containing the value 95 is at position 0 in the ArrayList. We access the value by providing its index to the get method.
+
+We can also insert new elements into an ArrayList.
+
+To insert new elements into an ArrayList, we can use a slightly different version of the add method that you previously used:
+ArrayList<Integer> quizGrades = new ArrayList<Integer>();
+quizGrades.add(95);
+quizGrades.add(87);
+quizGrades.add(73);
+
+quizGrades.add(0, 100);
+System.out.println( quizGrades.get(0) );
+
+
+The example above will print out the grade 100. 
+
+The add method will insert the grade 100 at the first position (0) into the list. Since it inserts a new element into the beginning of the ArrayList, all other element indices will be shifted one position higher. The grade 95 is now at index 1.
+
+Earlier in this lesson, we learned about the for loop. Since we've also learned how to retrieve the value at a specific index of an ArrayList, we can now access each of the elements.
+for (int i = 0; i < quizGrades.size(); i++) {
+
+    System.out.println( quizGrades.get(i) );
+
+}
+
+In the example above, the for loop above includes the following statements:
+1.Initialization: int variable i is set to 0 which is the first index of an ArrayList.
+2.Test condition: the code in the block will run as long as i is less than the size of quizGrades.
+3.Increment: The code in this block will execute after each loop. In this case,i will increment by 1 with i++ after each loop.
+
+The size method returns an int that represents how many total elements are stored within quizGrades. The example will print out each element within quizGrades in order. The process of going through each element in the ArrayList is called iteration.
+
+Since most for loops are very similar, Java provides a shortcut to reduce the amount of code required to write the loop called the for each loop.
+
+Here is an example of the concise for each loop:
+for (Integer grade : quizGrades){
+    System.out.println(grade);
+}
+
+
+In the example above, the colon (:) can be read as "in". The for each loop altogether can be read as "for each Integer element (called grade) in quizGrades, print out the value of grade."
+
+The loop will print out the value of each Integer element in quizGrades. 
+
+Note: the for each loop does not require a counter.
+
+Another useful built-in data structure in Java is the HashMap.
+
+Although the name of the data structure might not make sense to you immediately, think of it as a real-life dictionary. A dictionary contains a set of words and a definition for each word. A HashMap contains a set of keys and a value for each key. 
+
+If we look up a word in a dictionary, we can get the definition. If you provide a HashMap with a key that exists, you can retrieve the value associated with the key.
+
+Declaring a HashMap is shown in the following example:
+HashMap<String, Integer> myFriends = new HashMap<String, Integer>();
+
+
+In the example above, we create a HashMap object called myFriends. The myFriends HashMap will store keys of String data types and values of type Integer. 
+
+Note: the String object allows you to store multiple characters, such as a word in quotations (e.g. "Rats!").
+
+Now let's fill the HashMap with useful data.
+
+Add keys and values to a HashMap:
+HashMap<String, Integer> myFriends = new HashMap<String, Integer>();
+
+myFriends.put("Mark", 24);
+myFriends.put("Cassandra", 25);
+myFriends.put("Zenas", 21);
+
+In the example above, we used the put method to add a String key and an associated Integer value. The String key is the text inside double quotes " ". The Integer value is represented by the number.
+
+Now let's fill the HashMap with useful data.
+
+Add keys and values to a HashMap:
+HashMap<String, Integer> myFriends = new HashMap<String, Integer>();
+
+myFriends.put("Mark", 24);
+myFriends.put("Cassandra", 25);
+myFriends.put("Zenas", 21);
+
+In the example above, we used the put method to add a String key and an associated Integer value. The String key is the text inside double quotes " ". The Integer value is represented by the number.
+
+To access data in an ArrayList, we specified the index. In order to access a value in a HashMap, we specify the key:
+HashMap<String, Integer> myFriends = new HashMap<String, Integer>();
+
+myFriends.put("Mark", 24);
+myFriends.put("Cassandra", 25);
+myFriends.put("Zenas", 21);
+
+System.out.println( myFriends.get("Zenas") );
+
+In the example above, we call the get method on the myFriends HashMap using the key "Zenas". The console will print the value associated with "Zenas" which is 21.
+
+We can also access properties of a HashMap, such as the number of entries or the contents of the HashMap.
+
+Let's access the length and print out the contents of the myFriends:
+HashMap<String, Integer> myFriends = new HashMap<String, Integer>();
+
+myFriends.put("Mark", 24);
+myFriends.put("Cassandra", 25);
+myFriends.put("Zenas", 21);
+
+System.out.println( myFriends.size() );
+
+for (String name: myFriends.keySet()) {
+
+    System.out.println(name + " is age: " + myFriends.get(name));
+
+}
+
+In the example above, the size method of HashMap prints out the size of the myFriends instance. As a result, the console prints out 3 since there are 3 key-value pairs.
+
+Next, we use a for each loop to iterate over each key in myFriends. The keySet method of HashMap returns a list of keys. 
+
+Inside the loop, we access the current key name and use the get method of HashMap to access the value. The console will print out the names and ages of each of my friends.
+
