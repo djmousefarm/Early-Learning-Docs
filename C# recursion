@@ -1,0 +1,108 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace Recursion
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // UI
+            Console.WriteLine("Recursive method");
+            Console.WriteLine("Please only enter values upto 20");
+            Console.WriteLine("Enter exit to quit");
+
+            String s;  // initially setup to use primitive parsing.  I'll work out how to do this once the rest of the program works!
+
+            do
+            {
+                s = Console.ReadLine();
+                int number;
+                if (s == "0")   // just checking that there's something to output
+                {
+                    Console.WriteLine("No sequences to output!");
+                }
+                else
+                {
+                    try
+                    {
+                        number = Int16.Parse(s);
+                        if (number < 0)        // dealing with negative values
+                        {
+                            number = number * -1;  // ugh this is so clumsy but it works - coping with negative values
+                        }
+                        else if (number > 20)  // dealing with values that exceed the parameters of the exercise
+                        {
+                            Console.WriteLine("Please only enter values upto 20");
+                        }
+                        else
+                        {
+                            int[] fibArr = new int[number];
+                            Console.WriteLine(output(fibSeq(number, 0, fibArr)));  // calls the method that actually creates my array of fibonacci sequence values
+                        }
+                    }
+                    catch (FormatException)
+                    {
+                        if (s == "exit")
+                        {
+                            break;  // only break on the exit
+                        }
+                        Console.WriteLine("Please enter numbers or exit");
+                    }
+                }
+
+            } while (true);  // just keep on looping, you can only exit by typing "exit"
+
+        }
+
+        static int[] fibSeq(int value, int count, int[] myArr)  // method to do the fibonaccing
+        {
+            if (value == count)                                 // supposed to be recursion.  Is recursion, but, ugh, it's clunky as hell.
+            {
+                return myArr;
+            }
+            else if (count <= 1)
+            {
+                myArr[count] = count;
+                count++;
+                return fibSeq(value, count, myArr);
+            }
+            else
+            {
+                try
+                {
+                    myArr[count] = myArr[count - 1] + myArr[count - 2];
+                    count++;
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    Console.WriteLine("Index out of range");
+                }
+                return fibSeq(value, count, myArr);
+            }
+
+        }
+
+        static string output(int[] arr)     // method to show the sequence produced
+        {
+            String s = arr[0] + "";         // make sure the first value appears on it's own with no punctuation but need to force it to be a string
+            for (int i = 1; i < arr.Length; i++)
+            {
+                if (i == arr.Length - 1)      // dealing with the last value in the sequence and putting "and" in
+                {
+                    s += " and " + arr[i];
+                }
+                else
+                {
+                    s += ", " + arr[i];     // standard output for all other values in the array
+                }
+            }
+            return s;
+        }
+    }
+}
+
